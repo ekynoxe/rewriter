@@ -1,0 +1,7 @@
+All urls:
+
+<% @shared_urls.each do |url| %>
+<p>
+	<%= link_to(url.full_url, root_url()+(url.short_url || '')) %>
+</p>
+<% end %>

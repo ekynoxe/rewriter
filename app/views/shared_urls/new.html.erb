@@ -1,0 +1,12 @@
+<%= form_for @shared_url do |f| %>
+	<%= f.label :customer_id %>:
+	<%= f.text_field :customer_id %><br />
+	
+	<%= f.label :full_url %>:
+	<%= f.text_field :full_url %><br />
+	
+	<%= f.label :title %>:
+	<%= f.text_field :title %><br />
+	
+	<%= f.submit %>
+<% end %>
