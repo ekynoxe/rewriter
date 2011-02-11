@@ -13,9 +13,9 @@ class SharedUrlsController < ApplicationController
     @shared_url = SharedUrl.new(params[:shared_url])
     
     if !@shared_url.save
-      render :status => 400
-    else
       render :new
+    else
+      redirect_to shared_urls_url
     end
   end
   
@@ -52,10 +52,6 @@ class SharedUrlsController < ApplicationController
   def prepareFullUrl(url)
     begin
       uri = URI.parse(url)
-#      if uri.class != URI::HTTP
-#        errors.add(:url, 'Only HTTP protocol addresses can be used')
-#      end
-      logger.debug{uri.host + uri.request_uri}
       return uri.scheme + '://'+ uri.host + uri.request_uri
     rescue URI::InvalidURIError
       errors.add(:url, 'The format of the url is not valid.')
