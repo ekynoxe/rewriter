@@ -1,0 +1,8 @@
+Your short URL has been created:
+
+<p>
+<%= @shared_url.full_url %><br/>
+<%= link_to(root_url()+(@shared_url.short_url || ''), @shared_url.full_url) %>
+</p>
+
+<%= link_to('create another one',root_url()) %>

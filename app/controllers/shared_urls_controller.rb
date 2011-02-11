@@ -2,6 +2,8 @@ class SharedUrlsController < ApplicationController
   before_filter :prepareParams, :only => [:create]
   
   def index
+    # redirect to Home for prod so we don't list all urls
+#    redirect_to root_url
     @shared_urls = SharedUrl.all
   end
 
@@ -14,8 +16,6 @@ class SharedUrlsController < ApplicationController
     
     if !@shared_url.save
       render :new
-    else
-      redirect_to shared_urls_url
     end
   end
   

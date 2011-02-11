@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110210113952) do
+ActiveRecord::Schema.define(:version => 20110211142759) do
 
   create_table "shared_urls", :force => true do |t|
     t.integer  "customer_id"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(:version => 20110210113952) do
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "protocol",    :default => "http://"
   end
 
 end
