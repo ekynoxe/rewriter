@@ -1,9 +1,9 @@
 class SharedUrlsController < ApplicationController
+  USERNAME, PASSWORD = "the_admin", "46eec66813fa6e40f8eb683b5e9a0103" #Hint: it's the admin password!'
+  before_filter :authenticate, :only => [:index]
   before_filter :prepareParams, :only => [:create]
   
   def index
-    # redirect to Home for prod so we don't list all urls
-#    redirect_to root_url
     @shared_urls = SharedUrl.all
   end
 
@@ -55,6 +55,12 @@ class SharedUrlsController < ApplicationController
       return uri.scheme + '://'+ uri.host + uri.request_uri
     rescue URI::InvalidURIError
       errors.add(:url, 'The format of the url is not valid.')
+    end
+  end
+  
+  def authenticate
+    authenticate_or_request_with_http_basic do |username, password|
+      username == USERNAME && Digest::MD5.hexdigest(password) == PASSWORD
     end
   end
 end
