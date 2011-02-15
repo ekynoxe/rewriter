@@ -86,6 +86,29 @@ button {  width: auto; overflow: visible; }
     Author: Mathieu Davy
  */
 
+html{background-color: #dedede;}
+body{
+	margin: 100px auto;
+	width: 500px;
+}
+input, textarea {
+	border: 1px solid #ccc;
+	padding: 4px;
+}
+h1{
+	color: #999;
+	font-family: Helvetica, Helvetica Neue, Arial, sans-serif;
+	font-size: 55px;
+	letter-spacing: -3px;
+}
+#box{
+	background-color: #fff;
+	border: 1px solid #ccc;
+	-moz-box-shadow: 0 0 5px #ccc;
+	-webkit-box-shadow: 0 0 5px #ccc;
+	box-shadow: 0 0 5px #ccc;
+	padding: 30px;
+}
 
 
 
