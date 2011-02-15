@@ -50,6 +50,10 @@ class SharedUrlsController < ApplicationController
   end
   
   def prepareFullUrl(url)
+    if url.blank?
+      return nil
+    end
+    
     begin
       uri = URI.parse(url)
       return uri.scheme + '://'+ uri.host + uri.request_uri

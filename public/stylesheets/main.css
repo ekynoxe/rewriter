@@ -117,8 +117,13 @@ footer{
 	font-size: 80%;
 	margin-top: 10px;
 }
-
-
+.field_with_errors input{
+	border: 1px solid red;
+}
+.formErrors{
+	color: #f00;
+	margin: 0 0 20px;
+}
 
 
 
