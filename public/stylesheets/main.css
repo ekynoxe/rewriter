@@ -109,7 +109,8 @@ h1{
 	box-shadow: 0 0 5px #ccc;
 	padding: 30px;
 }
-
+#full_url{width: 340px;}
+#shorten_form_submit{float: right;}
 
 footer{
 	color: #999;
