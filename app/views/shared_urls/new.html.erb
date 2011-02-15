@@ -1,12 +1,4 @@
-<%= form_for @shared_url do |f| %>
-	<%= f.label :customer_id %>:
-	<%= f.text_field :customer_id %><br />
-	
-	<%= f.label :full_url %>:
-	<%= f.text_field :full_url %><br />
-	
-	<%= f.label :title %>:
-	<%= f.text_field :title %><br />
-	
-	<%= f.submit %>
-<% end %>
+<h1>shorten a url.</h1>
+<div id="box">
+<%= render :partial => 'shared_urls/mini_sharedurl_form', :shared_url => @shared_url %>
+</div>
