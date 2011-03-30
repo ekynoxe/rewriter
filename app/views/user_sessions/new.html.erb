@@ -1,0 +1,12 @@
+<h1>Login.</h1>
+
+<div id="box">
+<% form_for @user_session, :url => {:action => "create"} do |f| %>
+	<%= errors_for(@user_session, "Opps, unable to log you in").html_safe %>
+		<%= f.text_field :login, :placeholder => 'login' %>
+		<%= f.password_field :password, :placeholder => 'password' %><br/>
+		<%= f.check_box :remember_me %>
+		<%= f.label :remember_me %>
+		<%= f.submit "Login" %>
+<% end %>
+</div>
