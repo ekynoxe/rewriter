@@ -1,9 +1,8 @@
-<%= link_to 'home', root_url %>
-<br/>
-<h1>All urls:</h1>
-
+<h1>All urls<span class="orange">:</span></h1>
+<div id="box">
 <% @shared_urls.each do |url| %>
 <p>
 	<%= link_to(url.full_url, root_url()+(url.short_url || '')) %>
 </p>
 <% end %>
+</div>

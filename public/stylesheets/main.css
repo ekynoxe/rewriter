@@ -115,6 +115,20 @@ header{
 		letter-spacing: -6px;
 		margin-left: 0;
 	}
+	
+	header h1 a,
+	header h1 a:visited{
+		color: #d5d5d5;
+		text-decoration: none;
+		-webkit-transition:all .15s ease-out;
+		-moz-transition:all .15s ease-out;
+		-o-transition:all .15s ease-out;
+		transition:all .15s ease-out;
+	}
+	header h1 a:active,
+	header h1 a:hover{
+		color: #c5c5c5;
+	}
 #box{
 	background-color: #fff;
 	border: 1px solid #ccc;
@@ -129,7 +143,10 @@ header{
 		width: 100px;
 	}
 	#box form ul li{
-		margin: 18px 0;
+		margin: 0 0 18px 0;
+	}
+	#box form ul li:last-child{
+		margin-bottom: 0;
 	}
 		#box  input[type="text"],
 		#box  input[type="password"]{
