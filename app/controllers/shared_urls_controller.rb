@@ -55,8 +55,13 @@ class SharedUrlsController < ApplicationController
     end
     
     begin
-      uri = URI.parse(url)
-      return uri.scheme + '://'+ uri.host + uri.request_uri
+      uri = URI.split(url)
+      
+      scheme  = uri[0].blank? ? 'http' : uri[0]
+      host    = uri[2].blank? ? '' : uri[2]
+      path    = uri[5].blank? ? '' : uri[5]
+      
+      return scheme + '://'+ host + path
     rescue URI::InvalidURIError
       errors.add(:url, 'The format of the url is not valid.')
     end
