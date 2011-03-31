@@ -91,6 +91,9 @@ body{
 	margin: 0 auto 50px;
 	width: 500px;
 }
+ul, ol{
+	margin-left: 0;
+}
 .orange{color: #f90;}
 input, textarea {
 	border: 1px solid #ccc;
@@ -109,6 +112,7 @@ header{
 	header h1{
 		color: #d5d5d5;
 		font-size: 800%;
+		letter-spacing: -6px;
 		margin-left: 0;
 	}
 #box{
@@ -124,13 +128,17 @@ header{
 		display: inline-block;
 		width: 100px;
 	}
-	#box form label,
-	#box form input{
-		margin: 0 0 8px;
+	#box form ul li{
+		margin: 18px 0;
 	}
+		#box  input[type="text"],
+		#box  input[type="password"]{
+			font-size:15px;
+			padding: 5px;
+		}
 	#box  input[type="checkbox"]{
 		line-height: 30px;
-		vertical-align: center;
+		vertical-align: top;
 	}
 	#box  input[type="submit"]{
 		border: none;
@@ -157,12 +165,23 @@ footer{
 	margin-top: 10px;
 }
 .field_with_errors input{
-	border: 1px solid red;
+	border: 1px solid #f90;
 }
 .formErrors{
-	color: #f00;
+	color: #f60;
 	margin: 0 0 20px;
 }
+	#box .formErrors h5{
+		color: #444;
+	}
+	#box .formErrors ul{
+		list-style-type: square;
+		list-style-position: inside;
+		margin: 10px 0 0 0;
+	}
+		#box .formErrors ul li{
+			margin: 5px 0;
+		}
 
 
 
