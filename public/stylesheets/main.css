@@ -120,10 +120,10 @@ header{
 	header h1 a:visited{
 		color: #d5d5d5;
 		text-decoration: none;
-		-webkit-transition:all .15s ease-out;
-		-moz-transition:all .15s ease-out;
-		-o-transition:all .15s ease-out;
-		transition:all .15s ease-out;
+		-webkit-transition:all .3s ease-out;
+		-moz-transition:all .3s ease-out;
+		-o-transition:all .3s ease-out;
+		transition:all .3s ease-out;
 	}
 	header h1 a:active,
 	header h1 a:hover{
