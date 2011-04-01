@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110330124733) do
+ActiveRecord::Schema.define(:version => 20110401093400) do
 
   create_table "shared_urls", :force => true do |t|
     t.integer  "customer_id"
@@ -22,13 +22,14 @@ ActiveRecord::Schema.define(:version => 20110330124733) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "login",             :null => false
-    t.string   "email",             :null => false
-    t.string   "crypted_password",  :null => false
-    t.string   "password_salt",     :null => false
-    t.string   "persistence_token", :null => false
+    t.string   "login",                                :null => false
+    t.string   "email",                                :null => false
+    t.string   "crypted_password",                     :null => false
+    t.string   "password_salt",                        :null => false
+    t.string   "persistence_token",                    :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "admin",             :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
