@@ -1,5 +1,5 @@
 class SharedUrlsController < ApplicationController
-  USERNAME, PASSWORD = "the_admin", "46eec66813fa6e40f8eb683b5e9a0103" #Hint: it's the admin password!'
+  USERNAME, PASSWORD = "the_admin", "bfe28146ccec303a9b200e8bb7052f37" #Hint: it's the admin password!'
   before_filter :authenticate, :only => [:index]
   before_filter :prepareParams, :only => [:create]
   
@@ -12,15 +12,20 @@ class SharedUrlsController < ApplicationController
   end
   
   def create
-    @shared_url = SharedUrl.new(params[:shared_url])
+    @shared_url = SharedUrl.find_by_full_url(params[:shared_url][:full_url])
     
-    if !@shared_url.save
-      render :new
+    if !@shared_url
+      @shared_url = SharedUrl.new(params[:shared_url])
+    
+      if !@shared_url.save
+        render :new
+      end
     end
   end
   
   def show
     @shared_url = SharedUrl.find_by_short_url(params[:id])
+      
     if !@shared_url
       redirect_to root_url
     else
