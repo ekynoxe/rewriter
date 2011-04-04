@@ -108,8 +108,11 @@ h1{
 	margin-left: 20px;
 }
 header{
-	margin: 80px auto -50px;
+	margin: 0px auto -50px;
 }
+	header nav{
+		margin: 15px auto 50px;
+	}
 	header h1{
 		color: #d5d5d5;
 		font-size: 800%;

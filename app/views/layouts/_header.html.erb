@@ -1,3 +1,4 @@
 <header>
+	<nav><%= (link_to 'bookmarks', shared_urls_url) + ' | ' + (link_to 'logout', logout_url) unless !current_user %></nav>
 	<h1><%= link_to 'Rewriter', root_url, :title=>'home' %></h1>
 </header>
