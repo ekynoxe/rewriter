@@ -1,6 +1,6 @@
 class SharedUrlsController < ApplicationController
   before_filter :require_admin, :only => [:index]
-  before_filter :require_user
+  before_filter :require_user, :except => [:show]
   before_filter :prepareParams, :only => [:create]
   
   def index
