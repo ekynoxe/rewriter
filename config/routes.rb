@@ -10,6 +10,11 @@ Rewriter::Application.routes.draw do
   
   resources :shared_urls
   
+  resources :users do
+    resources :bookmarks
+    resources :shared_urls
+  end
+  
   match '/new' => "shared_urls#new"
   match '/:id' => "shared_urls#show"
 

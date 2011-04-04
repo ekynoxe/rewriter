@@ -10,10 +10,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110401093400) do
+ActiveRecord::Schema.define(:version => 20110404135229) do
+
+  create_table "bookmarks", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "shared_url_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "shared_urls", :force => true do |t|
-    t.integer  "customer_id"
     t.string   "full_url"
     t.string   "short_url"
     t.string   "title"

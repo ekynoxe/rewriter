@@ -1,23 +1,30 @@
 class SharedUrlsController < ApplicationController
-  before_filter :require_admin, :only => [:index]
+#  before_filter :require_admin, :only => [:index]
   before_filter :require_user, :except => [:show]
   before_filter :prepareParams, :only => [:create]
   
   def index
-    @shared_urls = SharedUrl.all
+    @shared_urls = current_user.shared_urls.all
   end
 
   def new
     @shared_url = SharedUrl.new
   end
   
-  def create
-    @shared_url = SharedUrl.find_by_full_url(params[:shared_url][:full_url])
-    
-    if !@shared_url
+  def create    
+    if !@shared_url = SharedUrl.find_by_full_url(params[:shared_url][:full_url])
       @shared_url = SharedUrl.new(params[:shared_url])
-    
       if !@shared_url.save
+        flash[:item_notice]='could not save your shared url'
+        render :new
+      end
+    end
+    
+    # url has already been shared, but do we have a bookmark for it?
+    if !@bookmark = current_user.bookmarks.find_by_shared_url_id(@shared_url.id)
+      @bookmark=current_user.bookmarks.build(:shared_url => @shared_url)
+      if !@bookmark.save
+        flash[:item_notice]='could not save your bookmark'
         render :new
       end
     end
