@@ -1,0 +1,24 @@
+<%= form_for @user, :url => {:action => "create"} do |f| %>
+	<%= errors_for(@user, "Opps, unable to save this profile").html_safe %>
+	<ul>
+		<li>
+			<%= f.label :login, 'login' %>
+			<%= f.text_field :login, :placeholder => 'mr_Smith' %>
+		</li>
+		<li>
+			<%= f.label :email, 'email' %>
+			<%= f.text_field :email, :placeholder => 'mr_Smith@email.com' %>
+		</li>
+		<li>
+			<%= f.label :password, 'password' %>
+			<%= f.password_field :password, :placeholder => '********' %>
+		</li>
+		<li>
+			<%= f.label :password_confirmation, 'confirm password' %>
+			<%= f.password_field :password_confirmation %>
+		</li>
+		<li>
+			<%= f.submit "register" %>
+		</li>
+	</ul>
+<% end %>

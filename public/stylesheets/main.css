@@ -111,8 +111,24 @@ header{
 	margin: 0px auto -50px;
 }
 	header nav{
-		margin: 15px auto 50px;
+		padding: 0 0 50px;
 	}
+		header nav ul li{
+			float: left;
+		}
+		header nav ul li a,
+		header nav ul li a:visited{
+			color: #aaa;
+			display: block;
+			font-weight: bold;
+			padding: 8px;
+			text-decoration: none;
+		}
+		header nav ul li a:active,
+		header nav ul li a:hover{
+			color: #888;
+		}
+	
 	header h1{
 		color: #d5d5d5;
 		font-size: 800%;
