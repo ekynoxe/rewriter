@@ -157,6 +157,9 @@ header{
 	box-shadow: 0 0 5px #ccc;
 	padding: 30px;
 }
+#new_shared_url_form{
+	margin-bottom: 30px;
+}
 	#box form ul{list-style-type: none;}
 	#box form label{
 		display: inline-block;

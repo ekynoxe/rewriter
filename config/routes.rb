@@ -1,7 +1,7 @@
 Rewriter::Application.routes.draw do
   get "user_sessions/new"
 
-  root :to => "home#index"
+  root :to => "shared_urls#index"
   
   resources :user_sessions
 

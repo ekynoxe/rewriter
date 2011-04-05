@@ -1,13 +1,11 @@
 <header>
 	<nav>
 		<ul>
-		<% if !current_user %>
-			<li><%= link_to "login", { :controller => "user_sessions", :action => "new" } %></li>
+		<% if !current_user %>	
 			<li><%= link_to 'register', new_user_url %></li>
+			<li><%= link_to "login", { :controller => "user_sessions", :action => "new" } %></li>
 		<% else %>
-			<li><%= link_to 'home', root_url, :title=>'home' %></li>
 			<li><%= link_to current_user.login, { :controller => "users", :action => "show", :id => @current_user } %></li>
-			<li><%= link_to 'bookmarks', shared_urls_url%></li>
 			<li><%= link_to 'logout', logout_url %></li>
 		<% end %>
 		</ul>

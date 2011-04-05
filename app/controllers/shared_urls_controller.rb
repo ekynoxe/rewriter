@@ -4,6 +4,7 @@ class SharedUrlsController < ApplicationController
   before_filter :prepareParams, :only => [:create]
   
   def index
+    @shared_url = SharedUrl.new
     @shared_urls = current_user.shared_urls.all
   end
 
@@ -32,7 +33,7 @@ class SharedUrlsController < ApplicationController
   
   def show
     @shared_url = SharedUrl.find_by_short_url(params[:id])
-      
+    
     if !@shared_url
       redirect_to root_url
     else
