@@ -199,6 +199,15 @@ header{
 #full_url{width: 340px;}
 #shorten_form_submit{float: right;}
 
+#box ul{list-style-type: none;}
+#box ul li{
+	border-bottom: 1px solid #efefef;
+	padding: 5px;
+}
+#box ul li:last-child{border: none;}
+#box ul li a{
+	display: block;
+}
 footer{
 	color: #999;
 	font-size: 80%;
