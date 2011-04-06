@@ -244,8 +244,83 @@ footer{
 }
 
 @media screen and (max-device-width: 480px) {
-  
-  
+	body{
+		margin: 0;
+		overflow: hidden;
+		width: 100%;
+	}
+	h1{
+		color: #999;
+		font-family: Helvetica, Helvetica Neue, Arial, sans-serif;
+		font-size: 38px;
+		letter-spacing: -3px;
+		margin-left: 20px;
+	}
+		header{
+			margin-bottom: -30px;
+		}
+			header h1{
+				font-size: 600%;
+			}
+			header nav{
+				padding: 0 10px 30px;
+			}
+	#box{
+		background-color: #fff;
+		border: none;
+		-moz-box-shadow: none;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		padding: 30px 0;
+		width: 100%;
+	}
+		#box ul{
+			margin: 0 10px;
+		}
+			#box ul li small{
+				white-space: nowrap;
+			}
+			#box ul li small a{
+				display: inline-block;
+			}
+		#box  input[type="text"],
+		#box  input[type="password"]{
+			float: left;
+			font-size:15px;
+			margin-bottom: 8px;
+			padding: 5px;
+			width: 90%;
+		}
+		#box  input[type="checkbox"]{
+			float: left;
+		}
+		
+		
+		#new_shared_url_form{
+			text-align: center;
+			width: 100%;
+		}
+		
+		#box  #full_url{
+			float: none;
+			margin: 0 auto 8px;
+			width: 90%;
+		}
+			#box form label{
+				display: block;
+				text-align: left;
+				width: 100%;
+			}
+		
+	#shorten_form_submit{
+		float: none;
+		margin: 8px auto;
+	}
+
+	footer{
+		margin-bottom: 10px;
+		padding: 0 10px;
+	}
   /* html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; } */
 }
 
