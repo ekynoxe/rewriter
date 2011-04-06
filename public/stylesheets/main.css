@@ -208,6 +208,7 @@ header{
 #box ul li a{
 	display: block;
 }
+#box form ul li{border: none;}
 footer{
 	color: #999;
 	font-size: 80%;
