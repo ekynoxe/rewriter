@@ -51,7 +51,7 @@ class SharedUrlsController < ApplicationController
   end
   
   def prepareShortUrl(l=0)
-    o =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten;
+    o =  [('a'..'z'),('A'..'Z'),('0'..'9')].map{|i| i.to_a}.flatten;
     string  =  (0..l).map{ o[rand(o.length)]  }.join;
     
     if SharedUrl.find_by_short_url(string)
