@@ -1,7 +1,7 @@
 <h1>Login<span class="orange">.</span></h1>
 
 <div id="box">
-<%= form_for @user_session, :url => {:action => "create"} do |f| %>
+<%= form_for @user_session, :url => login_url do |f| %>
 	<%= errors_for(@user_session, "Opps, unable to log you in").html_safe %>
 	<ul>
 		<li>

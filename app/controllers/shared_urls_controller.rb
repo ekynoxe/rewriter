@@ -54,6 +54,9 @@ class SharedUrlsController < ApplicationController
     o =  [('a'..'z'),('A'..'Z'),('0'..'9')].map{|i| i.to_a}.flatten;
     string  =  (0..l).map{ o[rand(o.length)]  }.join;
     
+    # Here it might be useful to prevent short urls to be one 
+    # => of the named routes names like "login", "logout", "register", "users"...
+    
     if SharedUrl.find_by_short_url(string)
       return prepareShortUrl(l+1)
     else

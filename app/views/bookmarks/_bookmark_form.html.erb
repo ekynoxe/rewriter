@@ -1,8 +1,0 @@
-<% form_for @bookmark, :url=>user_bookmarks_url, :html => { :id => "new_bookmark_form" } do |f| %>
-	<%= errors_for(@bookmark, "Opps, unable to shorten your url").html_safe %>
-	<%= f.fields_for :shared_url do |shared_url_fields| %>
-	<%= shared_url_fields.text_field :full_url, :id => "full_url", :placeholder => 'http://url.com' %> 
-	<% end %>
-	<%= f.hidden_field :user_id, {:value=>current_user.id} %>
-	<%= f.submit 'shorten', :id => "shorten_form_submit" %>
-<% end %>
