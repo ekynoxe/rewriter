@@ -95,7 +95,16 @@ ul, ol{
 	margin-left: 0;
 }
 .orange{color: #f90;}
-
+.del{
+	color: #f00;
+	float: right;
+	padding: 1px 5px;
+	text-decoration: none;
+}
+	.del:hover{
+		background-color: #f00;
+		color: #fff;
+	}
 input, textarea {
 	border: 1px solid #ccc;
 	padding: 4px;
