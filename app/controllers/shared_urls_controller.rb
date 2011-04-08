@@ -1,18 +1,17 @@
 class SharedUrlsController < ApplicationController
-#  before_filter :require_admin, :only => [:index]
+  before_filter :require_admin, :only => [:index]
   before_filter :require_user, :except => [:show]
   before_filter :prepareParams, :only => [:create]
   
   def index
-    @shared_url = SharedUrl.new
-    @shared_urls = current_user.shared_urls.all
+    @shared_urls = SharedUrl.all
   end
 
   def new
     @shared_url = SharedUrl.new
   end
   
-  def create    
+  def create
     if !@shared_url = SharedUrl.find_by_full_url(params[:shared_url][:full_url])
       @shared_url = SharedUrl.new(params[:shared_url])
       if !@shared_url.save
