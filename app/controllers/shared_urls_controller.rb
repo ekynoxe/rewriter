@@ -5,6 +5,7 @@ class SharedUrlsController < ApplicationController
   
   def index
     @shared_urls = SharedUrl.all
+    @shared_urls.sort! {|x,y| x.created_at <=> y.created_at }
   end
 
   def new
