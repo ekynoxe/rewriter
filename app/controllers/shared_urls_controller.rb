@@ -3,6 +3,8 @@ class SharedUrlsController < ApplicationController
   before_filter :require_user, :except => [:show]
   before_filter :prepareParams, :only => [:create]
   
+  EXCLUSION_LIST = %w{ bookmarks login logout register shorten users }
+  
   def index
     @shared_urls = SharedUrl.all
     @shared_urls.sort! {|x,y| x.created_at <=> y.created_at }
@@ -55,10 +57,11 @@ class SharedUrlsController < ApplicationController
     o =  [('a'..'z'),('A'..'Z'),('0'..'9')].map{|i| i.to_a}.flatten;
     string  =  (0..l).map{ o[rand(o.length)]  }.join;
     
-    # Here it might be useful to prevent short urls to be one 
-    # => of the named routes names like "login", "logout", "register", "users"...
+    # Here we prevent short urls to be one of the named 
+    # => routes names like "login", "logout", "register", "users"...
+    # => and we also check if the generated short url doesn't already exist
     
-    if SharedUrl.find_by_short_url(string)
+    if EXCLUSION_LIST.include?(string) || SharedUrl.find_by_short_url(string)
       return prepareShortUrl(l+1)
     else
       return string
