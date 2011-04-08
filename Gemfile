@@ -5,6 +5,7 @@ gem 'rails', '3.0.2'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'jquery-rails', '>= 0.2.6'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem "rails3-generators"
 gem 'authlogic'
