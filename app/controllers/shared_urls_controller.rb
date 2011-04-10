@@ -54,17 +54,21 @@ class SharedUrlsController < ApplicationController
   end
   
   def prepareShortUrl(l=0)
-    o =  [('a'..'z'),('A'..'Z'),('0'..'9')].map{|i| i.to_a}.flatten;
-    string  =  (0..l).map{ o[rand(o.length)]  }.join;
+    case Settings.rewrite_scheme
+    when "readable"
+      shortUrl = generateReadableUrl
+    else
+      shortUrl = generateRandomUrl(l)
+    end
     
     # Here we prevent short urls to be one of the named 
     # => routes names like "login", "logout", "register", "users"...
     # => and we also check if the generated short url doesn't already exist
     
-    if EXCLUSION_LIST.include?(string) || SharedUrl.find_by_short_url(string)
+    if EXCLUSION_LIST.include?(shortUrl) || SharedUrl.find_by_short_url(shortUrl)
       return prepareShortUrl(l+1)
     else
-      return string
+      return shortUrl
     end
   end
   
@@ -84,5 +88,14 @@ class SharedUrlsController < ApplicationController
     rescue URI::InvalidURIError
       errors.add(:url, 'The format of the url is not valid.')
     end
+  end
+  
+  def generateRandomUrl(l)
+    o =  [('a'..'z'),('A'..'Z'),('0'..'9')].map{|i| i.to_a}.flatten;
+    return (0..l).map{ o[rand(o.length)]  }.join;
+  end
+  
+  def generateReadableUrl
+    return Rufus::Mnemo::from_integer rand(8**5)
   end
 end

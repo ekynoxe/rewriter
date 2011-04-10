@@ -9,6 +9,8 @@ gem 'jquery-rails', '>= 0.2.6'
 gem 'sqlite3-ruby', :require => 'sqlite3'
 gem "rails3-generators"
 gem 'authlogic'
+gem 'rufus-mnemo'
+gem 'settingslogic'
 
 # Use unicorn as the web server
 # gem 'unicorn'

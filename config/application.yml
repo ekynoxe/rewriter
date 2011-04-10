@@ -1,0 +1,14 @@
+# app/config/application.yml
+  defaults: &defaults
+    # define here your prefered URL rewriting scheme:
+    rewrite_scheme: random     #will generate random urls from all alphanumeric chars a-z A-Z 0-9
+#    rewrite_scheme: readable    #will generate readable urls using rufus-mnemo
+
+  development:
+    <<: *defaults
+    
+  test:
+    <<: *defaults
+    
+  production:
+    <<: *defaults
