@@ -2,11 +2,12 @@
 	<nav>
 		<ul>
 		<% if !current_user %>	
-			<li><%= link_to 'register', register_url %></li>
-			<li><%= link_to "login", login_url %></li>
+			<li><%= link_to 'register', register_url, :title=>'register'  %></li>
+			<li><%= link_to "login", login_url, :title=>'login'  %></li>
 		<% else %>
-			<!--li><%= link_to current_user.login, { :controller => "users", :action => "show", :id => @current_user } %></li-->
-			<li><%= link_to 'logout', logout_url %></li>
+			<li><%= link_to 'logout', logout_url, :title=>'logout'  %></li>
+			<li><%= link_to 'change password', change_password_url, :title=>'change your password'  %></li>
+			<li><%= link_to 'change email', change_email_url, :title=>'change your email'  %></li>
 		<% end %>
 		</ul>
 	</nav>
