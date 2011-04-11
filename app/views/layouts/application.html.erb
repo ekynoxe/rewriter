@@ -25,6 +25,7 @@
 <%= render :partial => 'layouts/header' %>
 <%= yield %>
 <footer>
+	<%= link_to 'logout', logout_url, :title=>'logout', :class =>"logout_link"  %>
 	Mathieu Davy 2011
 </footer>
 </body>

@@ -66,9 +66,9 @@ input:invalid, textarea:invalid { border-radius: 1px;  -moz-box-shadow: 0px 0px 
 .no-boxshadow input:invalid, 
 .no-boxshadow textarea:invalid { background-color: #f0dddd; }
 
-::-moz-selection{ background: #FF5E99; color:#fff; text-shadow: none; }
-::selection { background:#FF5E99; color:#fff; text-shadow: none; } 
-a:link { -webkit-tap-highlight-color: #FF5E99; } 
+::-moz-selection{ background: #f90; color:#fff; text-shadow: none; }
+::selection { background:#f90; color:#fff; text-shadow: none; } 
+a:link { -webkit-tap-highlight-color: #f90; } 
 
 button {  width: auto; overflow: visible; }
 .ie7 img { -ms-interpolation-mode: bicubic; }
@@ -95,6 +95,11 @@ ul, ol{
 	margin-left: 0;
 }
 .orange{color: #f90;}
+.info{
+	color: #999;
+	display: block;
+	padding: 0 5px 10px 5px;
+}
 .del{
 	color: #f00;
 	float: right;
@@ -104,6 +109,10 @@ ul, ol{
 	.del:hover{
 		background-color: #f00;
 		color: #fff;
+	}
+	header nav .home_link,
+	footer .logout_link{
+		display: none;
 	}
 input, textarea {
 	border: 1px solid #ccc;
@@ -170,7 +179,7 @@ header{
 	padding: 30px;
 }
 #new_shared_url_form{
-	margin-bottom: 30px;
+	margin-bottom: 20px;
 }
 	#box form ul{list-style-type: none;}
 	#box form label{
@@ -261,29 +270,45 @@ footer{
 		overflow: hidden;
 		width: 100%;
 	}
+	.info{margin: 0 10px 5px;}
 	h1{
 		color: #999;
 		font-family: Helvetica, Helvetica Neue, Arial, sans-serif;
-		font-size: 38px;
+		font-size: 30px;
 		letter-spacing: -3px;
 		margin-left: 20px;
 	}
 		header{
-			margin-bottom: -30px;
+			margin-bottom: -46px;
 		}
 			header h1{
-				font-size: 600%;
+				font-size: 400%;
+				z-index: 0;
 			}
 			header nav{
-				padding: 0 10px 30px;
+				margin-bottom: -20px;
+				padding: 0 10px 0;
+				width: 100%;
+				z-index: 500;
 			}
+			header nav:after{
+				content: "\0020";
+				clear: both;
+				display: block;
+				height: 0;
+				visibility: hidden;
+			}
+			header nav .logout_link{display: none;}
+			header nav .home_link,
+			footer .logout_link{display: block;}
+			footer .logout_link{color: #f00; float: right;}
 	#box{
 		background-color: #fff;
 		border: none;
 		-moz-box-shadow: none;
 		-webkit-box-shadow: none;
 		box-shadow: none;
-		padding: 30px 0;
+		padding: 20px 0;
 		width: 100%;
 	}
 		#box ul{

@@ -5,7 +5,8 @@
 			<li><%= link_to 'register', register_url, :title=>'register'  %></li>
 			<li><%= link_to "login", login_url, :title=>'login'  %></li>
 		<% else %>
-			<li><%= link_to 'logout', logout_url, :title=>'logout'  %></li>
+			<li><%= link_to 'home', root_url, :title=>'home', :class =>"home_link" %></li>
+			<li><%= link_to 'logout', logout_url, :title=>'logout', :class =>"logout_link"  %></li>
 			<li><%= link_to 'change password', change_password_url, :title=>'change your password'  %></li>
 			<li><%= link_to 'change email', change_email_url, :title=>'change your email'  %></li>
 		<% end %>
