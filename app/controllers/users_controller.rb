@@ -19,24 +19,24 @@ class UsersController < ApplicationController
   end
   
   def change_password
-    render
+  end
+  
+  def change_email
   end
   
   def update
-    logger.debug '### '+params[:user].inspect
-    if params[:user][:password].blank? and params[:user][:password_confirmation].blank?
-      flash[:notice] = '<p class="notice">Please fill in the password fields</p>'.html_safe
-      redirect_to change_password_url
+    @user = current_user
+    if @user.update_attributes(params[:user])
+      flash[:notice] = "Account updated!"
+      redirect_to root_url
     else
-      current_user.password = params[:user][:password]
-      current_user.password_confirmation = params[:user][:password_confirmation]
-    
-      if current_user.save
-        flash[:notice] = '<p class="notice">Password successfully updated</p>'.html_safe
-        redirect_to root_url
+      case
+      when !params[:user][:password].blank? && !params[:user][:password_confirmation].blank?
+        render :action => :change_password
+      when !params[:user][:email].blank?
+        render :action => :change_email
       else
-        flash[:notice] = '<p class="notice">There has been a problem saving your new password, Please try again later</p>'.html_safe
-        redirect_to change_password_url
+        render :action => :change_password
       end
     end
   end
