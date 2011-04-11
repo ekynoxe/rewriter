@@ -1,10 +1,12 @@
 Rewriter::Application.routes.draw do
   root :to => "bookmarks#index"
   
-  match '/register' => "users#new",             :as => :register
-  match '/login'    => "user_sessions#new",     :as => :login,    :via => :get
-  match '/login'    => "user_sessions#create",  :as => :login,    :via => :post
-  match '/logout'   => "user_sessions#destroy", :as => :logout
+  match '/register'         => "users#new",             :as => :register
+  match '/login'            => "user_sessions#new",     :as => :login,            :via => :get
+  match '/login'            => "user_sessions#create",  :as => :login,            :via => :post
+  match '/logout'           => "user_sessions#destroy", :as => :logout
+  match '/change_password'  => "users#update",                                    :via => :put
+  match '/change_password'  => "users#change_password", :as => :change_password,  :via => :get
   
   resources :bookmarks
   resources :shared_urls
@@ -13,10 +15,10 @@ Rewriter::Application.routes.draw do
     resources :bookmarks
   end
   
-  match '/shorten'  => "shared_urls#create",    :as => :shorten,  :via => :post
+  match '/shorten'          => "shared_urls#create",    :as => :shorten,          :via => :post
   
   #this should take care of redirecting a short url to its full url
-  match '/:id'      => "shared_urls#show"
+  match '/:id'              => "shared_urls#show"
   
   #redirecting anything not matched to the home url
   match ":controller(/:action/:id/:item_id)", :to => redirect("/")
