@@ -1,9 +1,13 @@
 class UsersController < ApplicationController
-  before_filter :require_admin, :except => [:new,:create,:reset_password,:reset_password_submit]
+  before_filter :require_admin, :only => [:index]
   before_filter :require_user, :only => [:change_password,:update]
   rescue_from AbstractController::ActionNotFound, :with => :redirect_home
   rescue_from ActionController::UnknownAction, :with => :redirect_home
   rescue_from ActiveRecord::RecordNotFound, :with => :redirect_home
+  
+  def index
+    @users = User.all
+  end
   
   def new
     @user = User.new
