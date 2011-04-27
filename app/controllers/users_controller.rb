@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_filter :require_user, :only => [:change_password,:update]
   rescue_from AbstractController::ActionNotFound, :with => :redirect_home
   rescue_from ActionController::UnknownAction, :with => :redirect_home
+  rescue_from ActiveRecord::RecordNotFound, :with => :redirect_home
   
   def new
     @user = User.new
@@ -43,11 +44,11 @@ class UsersController < ApplicationController
   
   def reset_password
     logger.debug 'in reset_password'
-    @user = User.find_using_perishable_token(params[:reset_password_code], 1.week) || (raise Exception)
+    @user = User.find_using_perishable_token(params[:reset_password_code], 1.week) || (raise ActiveRecord::RecordNotFound)
   end
 
   def reset_password_submit
-    @user = User.find_using_perishable_token(params[:reset_password_code], 1.week) || (raise Exception)
+    @user = User.find_using_perishable_token(params[:reset_password_code], 1.week) || (raise ActiveRecord::RecordNotFound)
     if @user.update_attributes(params[:user])
       flash[:notice] = "Successfully reset password."
       redirect_to root_url
