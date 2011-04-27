@@ -22,8 +22,8 @@ class User < ActiveRecord::Base
     "#{self.login} <#{self.email}>"
   end
   
-  def send_forgot_password!
+  def send_forgot_password!(domain)
     reset_perishable_token!
-    Notifier.forgot_password(self).deliver
+    Notifier.forgot_password(self,domain).deliver
   end
 end

@@ -1,6 +1,7 @@
 class Notifier < ActionMailer::Base
-  def forgot_password(user)
-    from "Rewriter Notifier <noreply@ekx.im>"
+  
+  def forgot_password(user,domain)
+    from "Rewriter Notifier <noreply@#{domain}>"
 
     @reset_password_link = reset_password_url(user.perishable_token)
 
