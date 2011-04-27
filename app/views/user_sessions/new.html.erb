@@ -5,8 +5,8 @@
 	<%= errors_for(@user_session, "Opps, unable to log you in").html_safe %>
 	<ul>
 		<li>
-			<%= f.label :login, 'login' %>
-			<%= f.text_field :login, :placeholder => 'mr_Smith' %>
+			<%= f.label :login, 'login or email' %>
+			<%= f.text_field :login, :placeholder => 'mr_Smith or mr_smith@smithes.com' %>
 		</li>
 		<li>
 			<%= f.label :password, 'password' %>
@@ -19,6 +19,7 @@
 		<li>
 			<%= f.submit "Login" %>
 		</li>
+		<li class="small"><%= link_to "forgot your password?", forgot_password_url, :title=>'reset it!'  %></li>
 	</ul>
 <% end %>
 </div>

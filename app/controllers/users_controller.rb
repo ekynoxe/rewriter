@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :require_admin, :except => [:new,:create]
+  before_filter :require_admin, :except => [:new,:create,:reset_password,:reset_password_submit]
   before_filter :require_user, :only => [:change_password,:update]
   rescue_from AbstractController::ActionNotFound, :with => :redirect_home
   rescue_from ActionController::UnknownAction, :with => :redirect_home
@@ -38,6 +38,22 @@ class UsersController < ApplicationController
       else
         render :action => :change_password
       end
+    end
+  end
+  
+  def reset_password
+    logger.debug 'in reset_password'
+    @user = User.find_using_perishable_token(params[:reset_password_code], 1.week) || (raise Exception)
+  end
+
+  def reset_password_submit
+    @user = User.find_using_perishable_token(params[:reset_password_code], 1.week) || (raise Exception)
+    if @user.update_attributes(params[:user])
+      flash[:notice] = "Successfully reset password."
+      redirect_to root_url
+    else
+      flash[:notice] = "There was a problem resetting your password."
+      render :action => :reset_password
     end
   end
   

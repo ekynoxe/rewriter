@@ -13,4 +13,17 @@ class User < ActiveRecord::Base
   def isAdmin?
     return self.admin ? true : false
   end
+  
+  def self.find_by_login_or_email(login)
+    find_by_login(login) || find_by_email(login)
+  end
+  
+  def email_address_with_name
+    "#{self.login} <#{self.email}>"
+  end
+  
+  def send_forgot_password!
+    reset_perishable_token!
+    Notifier.forgot_password(self).deliver
+  end
 end
