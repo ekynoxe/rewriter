@@ -10,7 +10,8 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 gem "rails3-generators"
 gem 'authlogic'
 gem 'rufus-mnemo'
-gem 'settingslogic'
+gem 'settingslogic' # Maintains app settings in YAML file
+gem "rails-settings", :git => "https://github.com/100hz/rails-settings.git" # Here to allow user/admin to modify app-wide settings
 
 # Use unicorn as the web server
 # gem 'unicorn'
