@@ -1,0 +1,15 @@
+<h1><span class="orange">Admin</span> pages</h1>
+<div id="box">
+	<%= form_tag do |f| %>
+		<ul>
+			<li><%= label_tag 'admin_email', 'Admin email' %><%= text_field_tag 'admin_email', GlobalSettings.admin_email %></li>
+			<li><%= submit_tag 'save' %></li>
+		</ul>
+	<% end %>
+	
+	<hr/>
+	<h2>Number of shared urls</h2>
+	<p><%= SharedUrl.all.size %></p>
+	<h2>Number of users</h2>
+	<p><%= User.all.size %></p>
+</div>

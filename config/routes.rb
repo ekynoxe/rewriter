@@ -23,6 +23,11 @@ Rewriter::Application.routes.draw do
     resources :bookmarks
   end
   
+  namespace :admin do |admin|
+    match '/' => 'admin#update', :via => :post
+    match '/' => 'admin#index'
+  end
+  
   match '/shorten'          => "shared_urls#create",    :as => :shorten,          :via => :post
   
   #this should take care of redirecting a short url to its full url
