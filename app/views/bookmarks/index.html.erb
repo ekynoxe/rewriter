@@ -2,7 +2,7 @@
 <div id="box">
 <%= render :partial => 'shared_urls/mini_sharedurl_form', :shared_url => @shared_url %>
 <small class="info">Deleting a bookmark will not delete the short url, so others can still access it if it's been shared!</small>
-<ul>
+<ul class="listing">
 <% @bookmarks.reverse.each do |b| %>
 <% if b && b.shared_url && b.shared_url.full_url && b.shared_url.short_url %>
 <li>

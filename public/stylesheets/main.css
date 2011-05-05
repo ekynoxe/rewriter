@@ -91,9 +91,7 @@ body{
 	margin: 0 auto 50px;
 	width: 500px;
 }
-ul, ol{
-	margin-left: 0;
-}
+ul, ol{margin-left: 0;}
 .orange{color: #f90;}
 .info{
 	color: #999;
@@ -111,9 +109,8 @@ ul, ol{
 		color: #fff;
 	}
 	header nav .home_link,
-	footer .logout_link{
-		display: none;
-	}
+	footer .logout_link{display: none;}
+	
 input, textarea {
 	border: 1px solid #ccc;
 	padding: 4px;
@@ -125,6 +122,14 @@ h1{
 	letter-spacing: -3px;
 	line-height: 40px;
 	margin: 20px 0 0 20px;
+}
+h2{
+	color: #999;
+	font-family: Helvetica, Helvetica Neue, Arial, sans-serif;
+	font-size: 35px;
+	letter-spacing: -2px;
+	line-height: 40px;
+	margin: 15px 0 0 0;
 }
 header{
 	margin: 0px auto -50px;
@@ -187,6 +192,7 @@ header{
 		width: 100px;
 	}
 	#box form ul li{
+		border: none;
 		margin: 0 0 18px 0;
 	}
 	#box form ul li:last-child{
@@ -220,20 +226,31 @@ header{
 #full_url{width: 340px;}
 #shorten_form_submit{float: right;}
 
-#box ul{list-style-type: none;}
-#box ul li{
-	border-bottom: 1px solid #efefef;
+#box ul{list-style-type: square;}
+
+#box ul,
+#box ol{
+	margin: 10px 0;
+}
+#box ul li,
+#box ol li,
+#box p{
 	padding: 5px;
 }
-#box ul li:last-child{border: none;}
-#box ul li a{
+#box ul.listing{list-style-type: none;}
+#box ul.listing li{
+	border-bottom: 1px solid #efefef;
+}
+#box ul.listing li:last-child{border: none;}
+#box ul.listing li a{
 	display: block;
 }
-#box form ul li{border: none;}
+
 footer{
 	color: #999;
 	font-size: 80%;
 	margin-top: 10px;
+	padding: 0 8px;
 }
 .field_with_errors input{
 	border: 1px solid #f90;
@@ -278,6 +295,13 @@ footer{
 		letter-spacing: -3px;
 		margin-left: 20px;
 	}
+		h2{
+			color: #999;
+			font-family: Helvetica, Helvetica Neue, Arial, sans-serif;
+			font-size: 20px;
+			letter-spacing: -2px;
+			margin-left: 15px;
+		}
 		header{
 			margin-bottom: -46px;
 		}
@@ -311,9 +335,16 @@ footer{
 		padding: 20px 0;
 		width: 100%;
 	}
-		#box ul{
-			margin: 0 10px;
+		#box p{
+			margin: 0 auto 8px;
+			width: 90%;
 		}
+		#box ul,
+		#box ol{
+			margin: 0 auto 8px;
+			width: 90%;
+		}
+		#box ol{list-style-position: inside;}
 			#box ul li small{
 				white-space: nowrap;
 			}
@@ -358,7 +389,7 @@ footer{
 		margin-bottom: 10px;
 		padding: 0 10px;
 	}
-  /* html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; } */
+	html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; }
 }
 
 @media print {

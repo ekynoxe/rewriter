@@ -28,11 +28,11 @@
 	<% if current_user %>
 		<%= link_to 'logout', logout_url, :title=>'logout', :class =>"logout_link"  %>
 	<% end %>
-	Mathieu Davy 2011 | 
-	<%= link_to 'FAQ', faq_url, :title=>'FAQ' %> | 
-	<%= link_to 'terms and conditions', termsandconditions_url, :title=>'terms and conditions' %> | 
+	<!-- <%= link_to 'FAQ', faq_url, :title=>'FAQ' %> | -->
+	<%= link_to 'terms &amp; conditions'.html_safe, termsandconditions_url, :title=>'terms &amp; conditions'.html_safe %> | 
 	<%= link_to 'privacy policy', privacy_url, :title=>'privacy policy' %> | 
-	<%= link_to 'technology', technology_url, :title=>'technology' %>
+	<!-- <%= link_to 'technology', technology_url, :title=>'technology' %> --><br/>
+	Mathieu Davy 2011
 </footer>
 </body>
 </html>
