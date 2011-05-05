@@ -2,6 +2,10 @@
 	<%= errors_for(@user, "Opps, unable to save this profile").html_safe %>
 	<ul>
 		<li>
+			<%= f.label :full_name, 'full name' %>
+			<%= f.text_field :full_name, :placeholder => 'Martin Smith' %>
+		</li>
+		<li>
 			<%= f.label :login, 'login' %>
 			<%= f.text_field :login, :placeholder => 'mr_Smith' %>
 		</li>

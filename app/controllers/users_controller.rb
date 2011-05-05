@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   def change_password
   end
   
-  def change_email
+  def change_details
   end
   
   def update
@@ -39,7 +39,7 @@ class UsersController < ApplicationController
       when !params[:user][:password].blank? && !params[:user][:password_confirmation].blank?
         render :action => :change_password
       when !params[:user][:email].blank?
-        render :action => :change_email
+        render :action => :change_details
       else
         render :action => :change_password
       end

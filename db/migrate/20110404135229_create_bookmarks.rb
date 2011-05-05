@@ -13,6 +13,6 @@ class CreateBookmarks < ActiveRecord::Migration
   def self.down
     drop_table :bookmarks
     
-    remove_column :shared_urls, :customer_id, :integer
+    add_column :shared_urls, :customer_id, :integer
   end
 end

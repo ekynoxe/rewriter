@@ -7,8 +7,8 @@ Rewriter::Application.routes.draw do
   match '/logout'           => "user_sessions#destroy", :as => :logout
   match '/change_password'  => "users#update",                                    :via => :put
   match '/change_password'  => "users#change_password", :as => :change_password,  :via => :get
-  match '/change_email'     => "users#update",                                    :via => :put
-  match '/change_email'     => "users#change_email",    :as => :change_email,     :via => :get
+  match '/change_details'   => "users#update",                                    :via => :put
+  match '/change_details'   => "users#change_details",  :as => :change_details,   :via => :get
   
   match '/forgot_password'  => 'user_sessions#forgot_password',               :as => :forgot_password, :via => :get
   match '/forgot_password'  => 'user_sessions#forgot_password_lookup_email',  :as => :forgot_password, :via => :post

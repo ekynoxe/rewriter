@@ -4,6 +4,6 @@ class AddAdminFlagToUsers < ActiveRecord::Migration
   end
 
   def self.down
-    add_column :users, :admin
+    remove_column :users, :admin
   end
 end

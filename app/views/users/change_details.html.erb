@@ -1,0 +1,19 @@
+<h1>Change your <span class="orange">details</span>...</h1>
+<div id="box">
+<%= form_for current_user, :url=> change_details_url do |f| %>
+	<%= errors_for(current_user, "Opps, unable to change your details").html_safe %>
+	<ul>
+		<li>
+			<%= f.label :full_name, 'Your full name', :class=>'label' %>
+			<%= f.text_field :full_name, :value => current_user.full_name, :class=>'input' %>
+		</li>
+		<li>
+			<%= f.label :email, 'Your email', :class=>'label' %>
+			<%= f.text_field :email, :value => current_user.email, :class=>'input' %>
+		</li>
+		<li>
+			<%= f.submit 'change' %>
+		</li>
+	</ul>
+<% end %>
+</div>
