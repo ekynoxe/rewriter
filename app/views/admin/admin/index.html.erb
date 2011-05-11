@@ -8,8 +8,8 @@
 	<% end %>
 	
 	<hr/>
-	<h2>Number of shared urls</h2>
+	<h2>Number of <%= link_to 'shared urls', admin_shared_urls_url %></h2>
 	<p><%= SharedUrl.all.size %></p>
-	<h2>Number of users</h2>
+	<h2>Number of <%= link_to 'users', admin_users_url %></h2>
 	<p><%= User.all.size %></p>
 </div>

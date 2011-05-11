@@ -1,13 +1,11 @@
 class SharedUrlsController < ApplicationController
-  before_filter :require_admin, :only => [:index]
   before_filter :require_user, :except => [:show]
   before_filter :prepareParams, :only => [:create]
   
-  EXCLUSION_LIST = %w{ bookmarks login logout register shorten users }
+  EXCLUSION_LIST = %w{ admin bookmarks login logout register shorten users }
   
   def index
-    @shared_urls = SharedUrl.all
-    @shared_urls.sort! {|x,y| x.created_at <=> y.created_at }
+    redirect_to root_url
   end
 
   def new

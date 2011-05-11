@@ -31,6 +31,8 @@ Rewriter::Application.routes.draw do
   namespace :admin do |admin|
     match '/' => 'admin#update', :via => :post
     match '/' => 'admin#index'
+    resources :shared_urls
+    resources :users
   end
   
   match '/shorten'          => "shared_urls#create",    :as => :shorten,          :via => :post
