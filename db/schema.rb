@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110505143135) do
+ActiveRecord::Schema.define(:version => 20110511131026) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id"
@@ -34,6 +34,12 @@ ActiveRecord::Schema.define(:version => 20110505143135) do
     t.string   "full_url"
     t.string   "short_url"
     t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "url_requests", :force => true do |t|
+    t.integer  "shared_url_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

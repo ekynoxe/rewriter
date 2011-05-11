@@ -3,4 +3,6 @@ class SharedUrl < ActiveRecord::Base
   
   has_many :users, :through => :bookmarks
   has_many :bookmarks
+  
+  has_many :url_requests
 end

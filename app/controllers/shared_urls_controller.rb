@@ -33,10 +33,10 @@ class SharedUrlsController < ApplicationController
   
   def show
     @shared_url = SharedUrl.find_by_short_url(params[:id])
-    
     if !@shared_url
       redirect_to root_url
     else
+      UrlRequest.create!({:shared_url => @shared_url})
       redirect_to @shared_url.full_url
     end
   end
