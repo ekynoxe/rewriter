@@ -1,10 +1,11 @@
 <h1>All <span class="orange">shared urls</span>:</h1>
 <div id="box">
 	<p>Listed by reverse chronological order</p>
-<ul>
+<ul class="listing">
 <% @shared_urls.reverse.each do |url| %>
 <li>
-	<%= link_to url.full_url, root_url()+(url.short_url || ''), :target => '_blank' %> | <%= url.url_requests.size %></br><small><%= root_url()+(url.short_url || '') %></small>
+	<%= link_to url.full_url, root_url()+(url.short_url || ''), :target => '_blank' %><small><%= root_url()+(url.short_url || '') %></small><br/>
+	<small class="red"><%= format_shared_url_accessed (url) %></small>
 </li>
 <% end %>
 </ul>

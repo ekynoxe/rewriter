@@ -93,6 +93,7 @@ body{
 }
 ul, ol{margin-left: 0;}
 .orange{color: #f90;}
+.red{color: #f00;}
 .info{
 	color: #999;
 	display: block;
