@@ -25,16 +25,25 @@ class GroupsController < ApplicationController
   
   def update
   end
-=begin
+
   def destroy
     group = current_user.groups.find_by_id(params[:id])
     if group
-      
+      group.bookmarks.update_all("group_id = NULL")
       group.destroy
       redirect_to root_url
     end
   end
-=end
-  def add_bookmark
+
+  def add_bookmarks
+    if params[:group][:id].blank? || params[:bookmarks].blank?
+      redirect_to root_url and return
+    end
+    
+    group = current_user.groups.find_by_id(params[:group][:id])
+    if group && params[:bookmarks]
+      # do something
+    end
+    redirect_to root_url
   end
 end

@@ -29,6 +29,7 @@ Rewriter::Application.routes.draw do
     resources :bookmarks
     resources :groups
   end
+  match '/groups/add_bookmarks' => "groups#add_bookmarks",  :as => :add_bookmarks_to_group, :via => :post
   
   namespace :admin do |admin|
     match '/' => 'admin#update', :via => :post

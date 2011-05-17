@@ -1,5 +1,5 @@
 <!-- home#index -->
-<h1><span class="orange"><%= @group.name %></span>:</h1>
+<h1>&raquo; <span class="orange"><%= @group.name %></span>:</h1>
 <div id="box">
 <small class="info">Deleting a bookmark will not delete the short url, so others can still access it if it's been shared!</small>
 <ul class="listing">
@@ -19,7 +19,7 @@
 <ul class="tags">
 <% @groups.each do |g| %>
 <li>
-<!--<%= link_to 'x', group_url(g), :confirm => "Are you sure? This will mark all bookmarks belonging to this group as uncategorized", :method => :delete, :class=>'del' %>-->
+	<%= link_to 'x', group_url(g), :confirm => "Are you sure? This will mark all bookmarks belonging to this group as uncategorized", :method => :delete, :class=>'del' %>
 	<%= link_to g.name, group_url(g) %>
 </li>
 <% end %>
