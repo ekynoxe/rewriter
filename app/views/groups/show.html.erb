@@ -1,10 +1,12 @@
 <!-- home#index -->
-<h1>Your <span class="orange">bookmarks</span>:</h1>
+<h1><span class="orange"><%= @group.name %></span>:</h1>
 <div id="box">
-<%= render :partial => 'shared_urls/mini_sharedurl_form', :shared_url => @shared_url %>
 <small class="info">Deleting a bookmark will not delete the short url, so others can still access it if it's been shared!</small>
 <ul class="listing">
-<% @bookmarks.reverse.each do |b| %>
+<% if @group.bookmarks.size == 0 %>
+	<p>There are no bookmarks in this group!</p>
+<% end %>
+<% @group.bookmarks.reverse.each do |b| %>
 <% if b && b.shared_url && b.shared_url.full_url && b.shared_url.short_url %>
 <li>
 	<%= link_to 'x', bookmark_url(b), :confirm => "Are you sure?", :method => :delete, :class=>'del' %>
@@ -13,12 +15,11 @@
 <% end %>
 <% end %>
 </ul>
-
-<%= render :partial => 'groups/mini_group_form' %>
+<h2>your groups</h2>
 <ul class="tags">
 <% @groups.each do |g| %>
 <li>
-	<!--<%= link_to 'x', group_url(g), :confirm => "Are you sure? This will mark all bookmarks belonging to this group as uncategorized", :method => :delete, :class=>'del' %>-->
+<!--<%= link_to 'x', group_url(g), :confirm => "Are you sure? This will mark all bookmarks belonging to this group as uncategorized", :method => :delete, :class=>'del' %>-->
 	<%= link_to g.name, group_url(g) %>
 </li>
 <% end %>

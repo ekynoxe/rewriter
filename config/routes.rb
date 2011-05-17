@@ -1,5 +1,5 @@
 Rewriter::Application.routes.draw do
-  root :to => "bookmarks#index"
+  root :to => "home#index"
   
   match '/register'         => "users#new",             :as => :register
   match '/login'            => "user_sessions#new",     :as => :login,            :via => :get
@@ -23,9 +23,11 @@ Rewriter::Application.routes.draw do
   
   resources :bookmarks
   resources :shared_urls
+  resources :groups
   
   resources :users do
     resources :bookmarks
+    resources :groups
   end
   
   namespace :admin do |admin|

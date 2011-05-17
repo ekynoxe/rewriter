@@ -2,8 +2,7 @@ class BookmarksController < ApplicationController
   before_filter :require_user
   
   def index
-    @shared_url = SharedUrl.new
-    @bookmarks = current_user.bookmarks.all
+    redirect_to root_url
   end
   
   def destroy

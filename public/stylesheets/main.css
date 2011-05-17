@@ -77,8 +77,10 @@ button {  width: auto; overflow: visible; }
 .hidden { display: none; visibility: hidden; } 
 .visuallyhidden { position: absolute !important; clip: rect(1px 1px 1px 1px);  clip: rect(1px, 1px, 1px, 1px); }
 .invisible { visibility: hidden; }
-.clearfix:before, .clearfix:after {  content: "\0020"; display: block; height: 0; visibility: hidden;	 } 
-.clearfix:after { clear: both; }
+.clearfix:before, .clearfix:after,
+#box ul.tags:before,#box ul.tags:after {  content: "\0020"; display: block; height: 0; visibility: hidden;	 } 
+.clearfix:after,
+#box ul.tags:after { clear: both; }
 .clearfix { zoom: 1; }
 
 
@@ -99,13 +101,15 @@ ul, ol{margin-left: 0;}
 	display: block;
 	padding: 0 5px 10px 5px;
 }
-.del{
+.del,
+.del:visited{
 	color: #f00;
 	float: right;
 	padding: 1px 5px;
 	text-decoration: none;
 }
-	.del:hover{
+	.del:hover,
+	.del:active{
 		background-color: #f00;
 		color: #fff;
 	}
@@ -224,7 +228,7 @@ header{
 		text-align: center;
 		text-shadow: 0 1px 1px rgba(255, 255, 255, 0.85);
 	}
-#full_url{width: 340px;}
+.wide_input{width: 340px;}
 #shorten_form_submit{float: right;}
 
 #box ul{list-style-type: square;}
@@ -238,13 +242,32 @@ header{
 #box p{
 	padding: 5px;
 }
-#box ul.listing{list-style-type: none;}
+#box ul.listing,
+#box ul.tags{
+	list-style-type: none;
+}
 #box ul.listing li{
 	border-bottom: 1px solid #efefef;
 }
 #box ul.listing li:last-child{border: none;}
 #box ul.listing li a{
 	display: block;
+}
+
+#box ul.tags li{
+	background-color: #ededed;
+	float: left;
+	margin: 0 10px 0 0;
+	padding: 5px 0 5px 8px;
+	position: relative;
+}
+#box ul.tags li a{
+	text-decoration: none;
+}
+
+#box ul.tags li a.del{
+	margin-left: 5px;
+	padding: 0px 5px;
 }
 
 footer{
@@ -370,7 +393,7 @@ footer{
 			width: 100%;
 		}
 		
-		#box  #full_url{
+		#box  .wide_input{
 			float: none;
 			margin: 0 auto 8px;
 			width: 90%;

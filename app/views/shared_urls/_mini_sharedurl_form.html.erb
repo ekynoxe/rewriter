@@ -1,5 +1,6 @@
 <%= form_for @shared_url, :url => shorten_url, :html => { :id => "new_shared_url_form" } do |f| %>
 	<%= errors_for(@shared_url, "Opps, unable to shorten your url").html_safe %>
-	<%= f.text_field :full_url, :id => "full_url", :placeholder => 'http://url.com' %> 
+	<%= f.text_field :full_url, :class => "wide_input", :placeholder => 'http://url.com' %>
+	<%= collection_select "group", "id", current_user.groups.all, :id, :name, options={:include_blank => ''} %>
 	<%= f.submit 'shorten', :id => "shorten_form_submit" %>
 <% end %>

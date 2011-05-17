@@ -3,5 +3,9 @@ class HomeController < ApplicationController
   
   def index
     @shared_url = SharedUrl.new
+    @bookmarks = current_user.bookmarks.all
+    
+    @groups = current_user.groups.all
+    @new_group = Group.new
   end
 end
