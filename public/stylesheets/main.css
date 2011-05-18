@@ -77,8 +77,12 @@ button {  width: auto; overflow: visible; }
 .hidden { display: none; visibility: hidden; } 
 .visuallyhidden { position: absolute !important; clip: rect(1px 1px 1px 1px);  clip: rect(1px, 1px, 1px, 1px); }
 .invisible { visibility: hidden; }
-.clearfix:before, .clearfix:after {  content: "\0020"; display: block; height: 0; visibility: hidden;	 } 
-.clearfix:after { clear: both; }
+.clearfix:before, .clearfix:after,
+#box ul.tags:before,#box ul.tags:after,
+.wide_form:before,.wide_form:after {  content: "\0020"; display: block; height: 0; visibility: hidden;	 } 
+.clearfix:after,
+#box ul.tags:after,
+.wide_form:after { clear: both; }
 .clearfix { zoom: 1; }
 
 
@@ -92,6 +96,7 @@ body{
 	width: 500px;
 }
 ul, ol{margin-left: 0;}
+select{font-size: 100%;}
 .orange{color: #f90;}
 .red{color: #f00;}
 .info{
@@ -99,13 +104,15 @@ ul, ol{margin-left: 0;}
 	display: block;
 	padding: 0 5px 10px 5px;
 }
-.del{
+.del,
+.del:visited{
 	color: #f00;
 	float: right;
 	padding: 1px 5px;
 	text-decoration: none;
 }
-	.del:hover{
+	.del:hover,
+	.del:active{
 		background-color: #f00;
 		color: #fff;
 	}
@@ -205,7 +212,9 @@ header{
 			padding: 5px;
 		}
 	#box  input[type="checkbox"]{
+		float: left;
 		line-height: 30px;
+		margin-right: 10px;
 		vertical-align: top;
 	}
 	#box  input[type="submit"]{
@@ -224,8 +233,12 @@ header{
 		text-align: center;
 		text-shadow: 0 1px 1px rgba(255, 255, 255, 0.85);
 	}
-#full_url{width: 340px;}
-#shorten_form_submit{float: right;}
+.wide_input{
+	float: left;
+	margin-right: 10px;
+	width: 320px;
+}
+
 
 #box ul{list-style-type: square;}
 
@@ -238,7 +251,10 @@ header{
 #box p{
 	padding: 5px;
 }
-#box ul.listing{list-style-type: none;}
+#box ul.listing,
+#box ul.tags{
+	list-style-type: none;
+}
 #box ul.listing li{
 	border-bottom: 1px solid #efefef;
 }
@@ -246,6 +262,35 @@ header{
 #box ul.listing li a{
 	display: block;
 }
+
+#box ul.tags li{
+	background-color: #ededed;
+	float: left;
+	display: block;
+	margin: 0 10px 0 0;
+	padding: 0;
+}
+#box ul.tags li a,
+#box ul.tags li a:visited{
+	display: block;
+	float: right;
+	padding: 5px 8px;
+	text-decoration: none;
+}
+	#box ul.tags li a:hover,
+	#box ul.tags li a:active{
+		background-color: #607890;
+		color: #fff;
+	}
+
+#box ul.tags li a.del{
+	color: #ccc;
+	padding: 5px;
+}
+	#box ul.tags li a.del:hover{
+		background-color: #f00;
+		color: #fff;
+	}
 
 footer{
 	color: #999;
@@ -370,7 +415,7 @@ footer{
 			width: 100%;
 		}
 		
-		#box  #full_url{
+		#box  .wide_input{
 			float: none;
 			margin: 0 auto 8px;
 			width: 90%;

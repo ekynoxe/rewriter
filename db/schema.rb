@@ -10,11 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110511131026) do
+ActiveRecord::Schema.define(:version => 20110517104001) do
 
   create_table "bookmarks", :force => true do |t|
     t.integer  "user_id"
     t.integer  "shared_url_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "group_id"
+  end
+
+  create_table "groups", :force => true do |t|
+    t.string   "name",       :null => false
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

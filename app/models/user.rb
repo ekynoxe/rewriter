@@ -9,8 +9,10 @@ class User < ActiveRecord::Base
   validates_presence_of   :email
   validates_uniqueness_of :email
   
-  has_many :shared_urls, :through => :bookmarks
+  has_many :shared_urls,  :through => :bookmarks
+  has_many :bookmarks,    :through => :groups
   has_many :bookmarks
+  has_many :groups
   
   def isAdmin?
     return self.admin ? true : false

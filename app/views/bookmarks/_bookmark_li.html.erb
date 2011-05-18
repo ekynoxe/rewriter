@@ -1,0 +1,9 @@
+<% if b && b.shared_url && b.shared_url.full_url && b.shared_url.short_url %>
+<li>
+	<% if checkbox %>
+	<%= check_box_tag "bookmarks[]", b.id %>
+	<% end %>
+	<%= link_to 'x', bookmark_url(b), :confirm => "Are you sure?", :method => :delete, :class=>'del' %>
+	<%= link_to b.shared_url.full_url, root_url()+(b.shared_url.short_url || ''), :target => '_blank' %><small><%= root_url()+(b.shared_url.short_url || '') %></small>
+</li>
+<% end %>

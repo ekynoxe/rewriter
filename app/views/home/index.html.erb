@@ -1,4 +1,22 @@
-<h1>shorten a <span class="orange">url</span>.</h1>
+<!-- home#index -->
+<h1>Your <span class="orange">bookmarks</span>:</h1>
 <div id="box">
 <%= render :partial => 'shared_urls/mini_sharedurl_form', :shared_url => @shared_url %>
+
+<% if @groups.size == 0 %>
+	<p>Organise your bookmarks! <%= link_to 'create a group', new_group_url %></p>
+<% end %>
+<ul class="tags">
+<%= render :partial => "groups/group_li", :collection => @groups, :as => :g %>
+</ul>
+<small class="info">Deleting a bookmark will not delete the short url, so others can still access it if it's been shared!</small>
+
+<%= form_tag add_bookmarks_to_group_url do %>
+<ul class="listing">
+<%= render :partial => "bookmarks/bookmark_li", :collection => @bookmarks.reverse, :as => :b, :locals => {:checkbox => true} %>
+</ul>
+<%= collection_select "group", "id", current_user.groups.all, :id, :name, options={:include_blank => 'Move selected bookmarks to a group'}, :class=>"aselect" %>
+<%= submit_tag 'move' %>
+<%= link_to 'new group', new_group_url %>
+<% end %>
 </div>
