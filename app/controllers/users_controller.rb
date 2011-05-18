@@ -47,7 +47,6 @@ class UsersController < ApplicationController
   end
   
   def reset_password
-    logger.debug 'in reset_password'
     @user = User.find_using_perishable_token(params[:reset_password_code], 1.week) || (raise ActiveRecord::RecordNotFound)
   end
 
