@@ -3,7 +3,6 @@ module ApplicationHelper
   def errors_for(object, message=nil)
     html = ""
     unless object.errors.blank?
-      logger.debug "#####"+object.errors.inspect
       html << "<div class='formErrors #{object.class.name.humanize.downcase}Errors'>\n"
       if message.blank?
         if object.new_record?
