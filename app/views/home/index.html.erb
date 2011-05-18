@@ -4,28 +4,16 @@
 <%= render :partial => 'shared_urls/mini_sharedurl_form', :shared_url => @shared_url %>
 
 <ul class="tags">
-<% @groups.each do |g| %>
-<li>
-	<%= link_to 'x', group_url(g), :confirm => "Are you sure? This will mark all bookmarks belonging to this group as uncategorized", :method => :delete, :class=>'del' %>
-	<%= link_to g.name, group_url(g) %>
-</li>
-<% end %>
+<%= render :partial => "groups/group_li", :collection => @groups, :as => :g %>
 </ul>
 <small class="info">Deleting a bookmark will not delete the short url, so others can still access it if it's been shared!</small>
 
 <%= form_tag add_bookmarks_to_group_url do %>
 <ul class="listing">
-<% @bookmarks.reverse.each do |b| %>
-<% if b && b.shared_url && b.shared_url.full_url && b.shared_url.short_url %>
-<li>
-	<%= check_box_tag "bookmarks[]", b.id %>
-	<%= link_to 'x', bookmark_url(b), :confirm => "Are you sure?", :method => :delete, :class=>'del' %>
-	<%= link_to b.shared_url.full_url, root_url()+(b.shared_url.short_url || ''), :target => '_blank' %><small><%= root_url()+(b.shared_url.short_url || '') %></small>
-</li>
-<% end %>
-<% end %>
+<%= render :partial => "bookmarks/bookmark_li", :collection => @bookmarks.reverse, :as => :b, :locals => {:checkbox => true} %>
 </ul>
-<small class="info">Move selected bookmarks to a group</small><%= collection_select "group", "id", current_user.groups.all, :id, :name, options={:include_blank => ''}, :class=>"aselect" %>
+<%= collection_select "group", "id", current_user.groups.all, :id, :name, options={:include_blank => 'Move selected bookmarks to a group'}, :class=>"aselect" %>
 <%= submit_tag 'move' %>
+<%= link_to 'new group', new_group_url %>
 <% end %>
 </div>

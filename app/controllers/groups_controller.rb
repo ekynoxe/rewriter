@@ -12,6 +12,7 @@ class GroupsController < ApplicationController
   
   def new
     @shared_url = SharedUrl.new
+    @new_group = Group.new
   end
   
   def create
@@ -42,7 +43,11 @@ class GroupsController < ApplicationController
     
     group = current_user.groups.find_by_id(params[:group][:id])
     if group && params[:bookmarks]
-      # do something
+      params[:bookmarks].each do |bookmark_id|
+        if b = Bookmark.find(bookmark_id)
+          b.update_attributes(:group_id => group.id)
+        end
+      end
     end
     redirect_to root_url
   end

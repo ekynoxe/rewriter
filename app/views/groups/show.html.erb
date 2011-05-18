@@ -6,22 +6,10 @@
 <% if @group.bookmarks.size == 0 %>
 	<p>There are no bookmarks in this group!</p>
 <% end %>
-<% @group.bookmarks.reverse.each do |b| %>
-<% if b && b.shared_url && b.shared_url.full_url && b.shared_url.short_url %>
-<li>
-	<%= link_to 'x', bookmark_url(b), :confirm => "Are you sure?", :method => :delete, :class=>'del' %>
-	<%= link_to b.shared_url.full_url, root_url()+(b.shared_url.short_url || ''), :target => '_blank' %><small><%= root_url()+(b.shared_url.short_url || '') %></small>
-</li>
-<% end %>
-<% end %>
+<%= render :partial => "bookmarks/bookmark_li", :collection => @group.bookmarks.reverse, :as => :b, :locals => {:checkbox => false} %>
 </ul>
 <h2>your groups</h2>
 <ul class="tags">
-<% @groups.each do |g| %>
-<li>
-	<%= link_to 'x', group_url(g), :confirm => "Are you sure? This will mark all bookmarks belonging to this group as uncategorized", :method => :delete, :class=>'del' %>
-	<%= link_to g.name, group_url(g) %>
-</li>
-<% end %>
+<%= render :partial => "groups/group_li", :collection => @groups, :as => :g %>
 </ul>
 </div>

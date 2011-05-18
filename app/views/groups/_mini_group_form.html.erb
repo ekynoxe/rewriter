@@ -1,5 +1,5 @@
 <%= form_for @new_group, :url => user_groups_url(current_user), :html => { :class => "wide_form", :id => "new_group_form" } do |f| %>
 	<%= errors_for(@new_group, "Opps, unable to create your group").html_safe %>
-	<%= f.text_field :name, :class => "wide_input", :placeholder => 'new group name' %><br/>
+	<%= f.text_field :name, :class => "wide_input", :placeholder => 'new group name' %>
 	<%= f.submit 'create', :id => "group_form_submit" %>
 <% end %>
