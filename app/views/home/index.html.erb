@@ -3,6 +3,9 @@
 <div id="box">
 <%= render :partial => 'shared_urls/mini_sharedurl_form', :shared_url => @shared_url %>
 
+<% if @groups.size == 0 %>
+	<p>Organise your bookmarks! <%= link_to 'create a group', new_group_url %></p>
+<% end %>
 <ul class="tags">
 <%= render :partial => "groups/group_li", :collection => @groups, :as => :g %>
 </ul>
