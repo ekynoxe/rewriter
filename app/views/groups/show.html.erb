@@ -1,15 +1,26 @@
-<!-- home#index -->
+<% #groups#show %>
 <h1>&raquo; <span class="orange"><%= @group.name %></span>:</h1>
 <div id="box">
-<small class="info">Deleting a bookmark will not delete the short url, so others can still access it if it's been shared!</small>
-<ul class="listing">
+<%= render :partial => 'shared_urls/mini_sharedurl_form', :shared_url => @shared_url %>
+
+<% if @groups.size == 0 %>
+	<p>Organise your bookmarks! <%= link_to 'create a group', new_group_url %></p>
+<% end %>
+<ul class="tags">
+<%= render :partial => "groups/group_li", :collection => @groups, :as => :g %>
+<li id="new_group_tag"><%= link_to '&raquo; new group'.html_safe, new_group_url %></li>
+</ul>
+
+<%= form_tag add_bookmarks_to_group_url do %>
+<%= collection_select "group", "id", current_user.groups.all, :id, :name, options={:include_blank => 'Move selected bookmarks to a group'}, :class=>"aselect wide_input" %>
+<%= submit_tag 'move' %>
+<span class="clearfix"></span>
+<!--small class="info">Deleting a bookmark will not delete the short url, so others can still access it if it's been shared!</small-->
 <% if @group.bookmarks.size == 0 %>
 	<p>There are no bookmarks in this group!</p>
 <% end %>
-<%= render :partial => "bookmarks/bookmark_li", :collection => @group.bookmarks.reverse, :as => :b, :locals => {:checkbox => false} %>
+<ul class="listing">
+<%= render :partial => "bookmarks/bookmark_li", :collection => @group.bookmarks.reverse, :as => :b, :locals => {:checkbox => true} %>
 </ul>
-<h2>your groups</h2>
-<ul class="tags">
-<%= render :partial => "groups/group_li", :collection => @groups, :as => :g %>
-</ul>
+<% end #end bookmarks form %>
 </div>

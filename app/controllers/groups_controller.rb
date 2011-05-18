@@ -8,6 +8,8 @@ class GroupsController < ApplicationController
   def show
     @groups = current_user.groups.all
     @group = current_user.groups.find_by_id(params[:id]) or redirect_to root_url
+    @new_group = Group.new
+    @shared_url = SharedUrl.new
   end
   
   def new
@@ -16,8 +18,8 @@ class GroupsController < ApplicationController
   end
   
   def create
-    @group = current_user.groups.create(params[:group])
-    if !@group.save
+    @new_group = current_user.groups.create(params[:group])
+    if !@new_group.save
       flash[:item_notice]='could not save your group'
       render :new and return
     end
@@ -37,18 +39,29 @@ class GroupsController < ApplicationController
   end
 
   def add_bookmarks
-    if params[:group][:id].blank? || params[:bookmarks].blank?
-      redirect_to root_url and return
-    end
-    
-    group = current_user.groups.find_by_id(params[:group][:id])
-    if group && params[:bookmarks]
+    if params[:group].blank? || params[:bookmarks].blank?
+    # if we don't have a group or bookmarks, then do nothing
+      redirect_to root_url
+      
+    elsif params[:group][:id].blank? && params[:bookmarks]
+    # if we don't have a group but bookmarks are set, we need to move bookmarks out of their current group
       params[:bookmarks].each do |bookmark_id|
         if b = Bookmark.find(bookmark_id)
-          b.update_attributes(:group_id => group.id)
+          b.update_attributes(:group_id => nil)
         end
       end
+      redirect_to root_url
+      
+    else
+    # else move the bookmarks to the requested group if found
+      if group = current_user.groups.find_by_id(params[:group][:id])
+        params[:bookmarks].each do |bookmark_id|
+          if b = Bookmark.find(bookmark_id)
+            b.update_attributes(:group_id => group.id)
+          end
+        end
+      end
+      redirect_to root_url
     end
-    redirect_to root_url
   end
 end
