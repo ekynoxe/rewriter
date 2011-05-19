@@ -11,7 +11,7 @@
 <li id="new_group_tag"><%= link_to '&raquo; new group'.html_safe, new_group_url %></li>
 </ul>
 
-<%= form_tag add_bookmarks_to_group_url do %>
+<%= form_tag add_bookmarks_to_group_url, :class => "wide_form" do %>
 <% if @bookmarks.size != 0 %>
 <%= collection_select "group", "id", current_user.groups.all, :id, :name, options={:include_blank => 'Move selected bookmarks to a group'}, :class=>"aselect wide_input" %>
 <%= submit_tag 'move' %>
