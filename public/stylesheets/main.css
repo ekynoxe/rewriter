@@ -118,7 +118,8 @@ select{font-size: 100%;}
 		background-color: #f00;
 		color: #fff;
 	}
-	header nav .home_link,
+/*	header nav .logout_link{float: right;} */
+	header nav li:last-child{float: right;}
 	footer .logout_link{display: none;}
 	
 input, textarea {
