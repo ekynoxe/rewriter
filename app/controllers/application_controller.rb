@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
     end
     
     def require_admin
-      unless current_user && current_user.isAdmin?
+      unless current_user && current_user.is_admin?
         store_location
         flash[:notice] = "You must be admin to access this page"
         redirect_to root_url

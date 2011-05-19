@@ -14,7 +14,7 @@ class User < ActiveRecord::Base
   has_many :bookmarks
   has_many :groups
   
-  def isAdmin?
+  def is_admin?
     return self.admin ? true : false
   end
   

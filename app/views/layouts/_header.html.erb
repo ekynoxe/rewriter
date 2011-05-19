@@ -1,14 +1,17 @@
 <header>
 	<nav>
 		<ul>
-		<% if !current_user %>	
+		<% if !current_user %>
 			<li><%= link_to 'register', register_url, :title=>'register'  %></li>
 			<li><%= link_to "login", login_url, :title=>'login'  %></li>
 		<% else %>
 			<li><%= link_to 'home', root_url, :title=>'home', :class =>"home_link" %></li>
-			<li><%= link_to 'logout', logout_url, :title=>'logout', :class =>"logout_link"  %></li>
+			<% if current_user.is_admin? %>
+			<li><%= link_to 'admin', admin_url, :title=>'admin'  %></li>
+			<% end %>
 			<li><%= link_to 'change password', change_password_url, :title=>'change your password'  %></li>
 			<li><%= link_to 'your details', change_details_url, :title=>'your details'  %></li>
+			<li><%= link_to 'logout', logout_url, :title=>'logout', :class =>"logout_link"  %></li>
 		<% end %>
 		</ul>
 	</nav>
