@@ -1,5 +1,6 @@
 class GroupsController < ApplicationController
   before_filter :require_user
+  before_filter :store_location, :only=>[:show]
   
   def index
     redirect_to root_url
