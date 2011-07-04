@@ -292,6 +292,7 @@ header{
 	}
 	#box ul.tags li a:hover,
 	#box ul.tags li a:active,
+	#box ul.tags li a.selected,
 	#box ul.tags li#new_group_tag a:hover,
 	#box ul.tags li#new_group_tag a:active{
 		background-color: #607890;

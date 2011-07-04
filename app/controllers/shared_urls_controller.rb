@@ -23,8 +23,12 @@ class SharedUrlsController < ApplicationController
     
     # url has already been shared, but do we have a bookmark for it?
     if !@bookmark = current_user.bookmarks.find_by_shared_url_id(@shared_url.id)
-#      @bookmark=current_user.bookmarks.build(:shared_url => @shared_url, :group_id => params[:group][:id])
-      @bookmark=current_user.bookmarks.build(:shared_url => @shared_url)
+      if params[:group_id].blank?
+        @bookmark=current_user.bookmarks.build(:shared_url => @shared_url)
+      else
+        @bookmark=current_user.bookmarks.build(:shared_url => @shared_url, :group_id => params[:group_id])
+      end
+      
       if !@bookmark.save
         flash[:item_notice]='could not save your bookmark'
         render :new

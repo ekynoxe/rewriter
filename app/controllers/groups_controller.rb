@@ -41,8 +41,8 @@ class GroupsController < ApplicationController
 
   def add_bookmarks
     if params[:group].blank? || params[:bookmarks].blank?
-    # if we don't have a group or bookmarks, then do nothing
-      redirect_to root_url
+    # if we don't have a group or bookmarks, then do nothing  
+      redirect_back_or_default(root_url)
       
     elsif params[:group][:id].blank? && params[:bookmarks]
     # if we don't have a group but bookmarks are set, we need to move bookmarks out of their current group
@@ -51,7 +51,7 @@ class GroupsController < ApplicationController
           b.update_attributes(:group_id => nil)
         end
       end
-      redirect_to root_url
+      redirect_back_or_default(root_url)
       
     else
     # else move the bookmarks to the requested group if found
@@ -62,7 +62,7 @@ class GroupsController < ApplicationController
           end
         end
       end
-      redirect_to root_url
+      redirect_back_or_default(root_url)
     end
   end
 end

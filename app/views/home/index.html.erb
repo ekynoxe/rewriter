@@ -7,7 +7,7 @@
 	<p>Organise your bookmarks! <%= link_to 'create a group', new_group_url %></p>
 <% end %>
 <ul class="tags">
-<%= render :partial => "groups/group_li", :collection => @groups, :as => :g %>
+<%= render :partial => "groups/group_li", :collection => @groups, :as => :g, :locals => {:current_group => nil} %>
 <li id="new_group_tag"><%= link_to '&raquo; new group'.html_safe, new_group_url %></li>
 </ul>
 
