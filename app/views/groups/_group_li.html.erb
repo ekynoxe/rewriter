@@ -1,4 +1,4 @@
 <li>
 	<%= link_to 'x', group_url(g), :confirm => "Are you sure? This will mark all bookmarks belonging to this group as uncategorized", :method => :delete, :class=>'del' %>
-	<%= link_to g.name+' ('+g.bookmarks.size.to_s+')', group_url(g) %>
+	<%= link_to g.name+' ('+g.bookmarks.size.to_s+')', group_url(g), :class=> (current_group && current_group.id == g.id) ? "selected" : "" %>
 </li>

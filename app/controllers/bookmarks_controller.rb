@@ -9,7 +9,7 @@ class BookmarksController < ApplicationController
     bookmark = current_user.bookmarks.find_by_id(params[:id])
     if bookmark
       bookmark.destroy
-      redirect_to root_url
+      redirect_back_or_default(root_url)
     end
   end
 end
