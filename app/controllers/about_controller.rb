@@ -8,6 +8,6 @@ class AboutController < ApplicationController
   def privacy
   end
   
-  def technology
+  def whatsitmadeof
   end
 end

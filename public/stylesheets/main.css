@@ -177,10 +177,10 @@ header{
 	header h1 a:visited{
 		color: #d5d5d5;
 		text-decoration: none;
-		-webkit-transition:all .3s ease-out;
-		-moz-transition:all .3s ease-out;
-		-o-transition:all .3s ease-out;
-		transition:all .3s ease-out;
+		-webkit-transition: color .3s ease-out;
+		-moz-transition: color .3s ease-out;
+		-o-transition: color .3s ease-out;
+		transition: color .3s ease-out;
 	}
 	header h1 a:active,
 	header h1 a:hover{
@@ -258,6 +258,7 @@ header{
 #box p{
 	padding: 5px;
 }
+#box ul.listing{clear: both;}
 #box ul.listing,
 #box ul.tags{
 	list-style-type: none;

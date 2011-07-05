@@ -18,7 +18,6 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
   <%= stylesheet_link_tag :all %>
-  <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -31,7 +30,7 @@
 	<!-- <%= link_to 'FAQ', faq_url, :title=>'FAQ' %> | -->
 	<%= link_to 'terms &amp; conditions'.html_safe, termsandconditions_url, :title=>'terms &amp; conditions'.html_safe %> | 
 	<%= link_to 'privacy policy', privacy_url, :title=>'privacy policy' %> | 
-	<!-- <%= link_to 'technology', technology_url, :title=>'technology' %> --><br/>
+	<%= link_to "what's it made of?", whatsitmadeof_url, :title=>"what's it made of?" %><br/>
 	Mathieu Davy 2011
 </footer>
 </body>
