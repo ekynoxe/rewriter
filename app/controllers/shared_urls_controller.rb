@@ -2,7 +2,7 @@ class SharedUrlsController < ApplicationController
   before_filter :require_user, :except => [:show]
   before_filter :prepareParams, :only => [:create]
   
-  EXCLUSION_LIST = %w{ admin bookmarks login logout register shorten users }
+  EXCLUSION_LIST = %w{ about admin bookmarks change_details change_password faq forgot_password groups home login logout privacy register reset_password shared_urls shorten termsandconditions user_sessions users whatsitmadeof }
   
   def index
     redirect_to root_url
