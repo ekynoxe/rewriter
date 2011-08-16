@@ -2,7 +2,7 @@ class SharedUrlsController < ApplicationController
   before_filter :require_user, :except => [:show]
   before_filter :prepareParams, :only => [:create]
   
-  EXCLUSION_LIST = %w{ admin bookmarks login logout register shorten users }
+  EXCLUSION_LIST = %w{ about admin bookmarks change_details change_password faq forgot_password groups home login logout privacy register reset_password shared_urls shorten termsandconditions user_sessions users whatsitmadeof }
   
   def index
     redirect_to root_url
@@ -17,7 +17,7 @@ class SharedUrlsController < ApplicationController
       @shared_url = SharedUrl.new(params[:shared_url])
       if !@shared_url.save
         flash[:item_notice]='could not save your shared url'
-        render :new
+        renderGroupOrHomeIndex and return
       end
     end
     
@@ -31,9 +31,13 @@ class SharedUrlsController < ApplicationController
       
       if !@bookmark.save
         flash[:item_notice]='could not save your bookmark'
-        render :new
+        renderGroupOrHomeIndex and return
       end
     end
+    
+    # Render bookmark has been created!
+    flash[:item_notice]='Bookmark created!'
+    renderGroupOrHomeIndex and return
   end
   
   def show
@@ -95,7 +99,7 @@ class SharedUrlsController < ApplicationController
       
       return scheme + '://'+ userInfo + host + port + registry + path + opaque + query + fragment
     rescue URI::InvalidURIError
-      errors.add(:url, 'The format of the url is not valid.')
+#      errors.add(:url, 'The format of the url is not valid.')
     end
   end
   

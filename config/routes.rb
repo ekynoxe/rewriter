@@ -19,7 +19,7 @@ Rewriter::Application.routes.draw do
   match '/faq'                  => "about#faq",                 :as => :faq
   match '/termsandconditions'   => "about#termsandconditions",  :as => :termsandconditions
   match '/privacy'              => "about#privacy",             :as => :privacy
-  match '/technology'           => "about#technology",          :as => :technology
+  match '/whatsitmadeof'        => "about#whatsitmadeof",       :as => :whatsitmadeof
   
   resources :bookmarks
   resources :shared_urls
