@@ -17,7 +17,7 @@ class SharedUrlsController < ApplicationController
       @shared_url = SharedUrl.new(params[:shared_url])
       if !@shared_url.save
         flash[:item_notice]='could not save your shared url'
-        render :new
+        renderGroupOrHomeIndex and return
       end
     end
     
@@ -31,9 +31,13 @@ class SharedUrlsController < ApplicationController
       
       if !@bookmark.save
         flash[:item_notice]='could not save your bookmark'
-        render :new
+        renderGroupOrHomeIndex and return
       end
     end
+    
+    # Render bookmark has been created!
+    flash[:item_notice]='Bookmark created!'
+    renderGroupOrHomeIndex and return
   end
   
   def show
@@ -95,7 +99,7 @@ class SharedUrlsController < ApplicationController
       
       return scheme + '://'+ userInfo + host + port + registry + path + opaque + query + fragment
     rescue URI::InvalidURIError
-      errors.add(:url, 'The format of the url is not valid.')
+#      errors.add(:url, 'The format of the url is not valid.')
     end
   end
   

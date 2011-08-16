@@ -258,6 +258,7 @@ header{
 #box p{
 	padding: 5px;
 }
+#box ul li.highlight{background-color: #F7F0DC;}
 #box ul.listing{clear: both;}
 #box ul.listing,
 #box ul.tags{

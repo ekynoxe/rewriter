@@ -1,5 +1,5 @@
 <% if b && b.shared_url && b.shared_url.full_url && b.shared_url.short_url %>
-<li>
+<li <% if !created_id.nil? && created_id == b.id %>class="highlight"<% end %>>
 	<% if checkbox %>
 	<%= check_box_tag "bookmarks[]", b.id %>
 	<% end %>
