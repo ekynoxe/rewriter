@@ -20,7 +20,7 @@
 	<p>There are no bookmarks in this group!</p>
 <% end %>
 <ul class="listing">
-<%= render :partial => "bookmarks/bookmark_li", :collection => @group.bookmarks.reverse, :as => :b, :locals => {:checkbox => true, :created_id => (@bookmark.blank? ? nil : @bookmark.id)} %>
+<%= render :partial => "bookmarks/bookmark_li", :collection => @group.bookmarks.order("bookmarks.created_at DESC"), :as => :b, :locals => {:checkbox => true, :created_id => (@bookmark.blank? ? nil : @bookmark.id)} %>
 </ul>
 <% end #end bookmarks form %>
 </div>
