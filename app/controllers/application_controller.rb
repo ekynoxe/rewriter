@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
 
     def renderGroupOrHomeIndex
       @groups = current_user.groups
-      @bookmarks = current_user.bookmarks.find(:all, :conditions => "group_id IS NULL")
+      @bookmarks = current_user.bookmarks.find(:all, :conditions => "group_id IS NULL", :order=>"bookmarks.created_at DESC")
       if params[:group_id].blank?
         render 'home/index'
       else
