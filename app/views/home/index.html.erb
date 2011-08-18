@@ -18,7 +18,7 @@
 <span class="clearfix"></span>
 <!--small class="info">Deleting a bookmark will not delete the short url, so others can still access it if it's been shared!</small-->
 <ul class="listing">
-<%= render :partial => "bookmarks/bookmark_li", :collection => @bookmarks.order("bookmarks.created_at DESC"), :as => :b, :locals => {:checkbox => true, :created_id => (@bookmark.blank? ? nil : @bookmark.id)} %>
+<%= render :partial => "bookmarks/bookmark_li", :collection => @bookmarks, :as => :b, :locals => {:checkbox => true, :created_id => (@bookmark.blank? ? nil : @bookmark.id)} %>
 </ul>
 <% else %>
 <p>You have no unsorted bookmarks.</p>
