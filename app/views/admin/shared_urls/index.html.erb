@@ -4,8 +4,8 @@
 <ul class="listing">
 <% @shared_urls.reverse.each do |url| %>
 <li>
-	<%= link_to url.full_url, root_url()+(url.short_url || ''), :target => '_blank' %><small><%= root_url()+(url.short_url || '') %></small><br/>
 	<small class="red"><%= format_shared_url_accessed (url) %></small>
+	<%= link_to url.full_url, root_url()+(url.short_url || ''), :target => '_blank' %><small><%= root_url()+(url.short_url || '') %></small><br/>
 </li>
 <% end %>
 </ul>

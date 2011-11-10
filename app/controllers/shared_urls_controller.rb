@@ -54,7 +54,7 @@ class SharedUrlsController < ApplicationController
   def prepareParams
       parameters = params[:shared_url]
       
-      parameters[:short_url] = prepareShortUrl
+      parameters[:short_url] = (parameters[:short_url].blank? || !current_user.is_admin?) ? prepareShortUrl : parameters[:short_url]
       parameters[:full_url] = prepareFullUrl(parameters[:full_url])
       
       params[:shared_url] = parameters
