@@ -13,7 +13,8 @@ class SharedUrlsController < ApplicationController
   end
   
   def create
-    if !@shared_url = SharedUrl.find_by_full_url(params[:shared_url][:full_url])
+    # If we're an admin and we provided a short url, we need to create a new SharedUrl regardless
+    if (current_user.is_admin? && !params[:shared_url][:short_url].blank?) || (!@shared_url = SharedUrl.find_by_full_url(params[:shared_url][:full_url]))
       @shared_url = SharedUrl.new(params[:shared_url])
       if !@shared_url.save
         flash[:item_notice]='could not save your shared url'
