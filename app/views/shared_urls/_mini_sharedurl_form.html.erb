@@ -4,7 +4,7 @@
 	<%= hidden_field_tag :group_id, current_group.id if defined?(current_group)%>
 	<%= f.submit 'shorten', :id => "shorten_form_submit" %>
 	<% if current_user.is_admin? %>
-		<%= f.label :short_url, "you're an admin, so you can chose the short version too!"  %>
+		<p>you're an admin, so you can chose the short version too!</p>
 		<%= f.text_field :short_url, :class => "wide_input", :placeholder => 'abcde' %>
 	<% end %>
 <% end %>

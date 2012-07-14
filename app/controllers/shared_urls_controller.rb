@@ -18,7 +18,7 @@ class SharedUrlsController < ApplicationController
       @shared_url = SharedUrl.new(params[:shared_url])
       if !@shared_url.save
         flash[:item_notice]='could not save your shared url'
-        renderGroupOrHomeIndex and return
+        redirectToGroupOrHomeIndex
       end
     end
     
@@ -32,13 +32,13 @@ class SharedUrlsController < ApplicationController
       
       if !@bookmark.save
         flash[:item_notice]='could not save your bookmark'
-        renderGroupOrHomeIndex and return
+        redirectToGroupOrHomeIndex
       end
     end
     
     # Render bookmark has been created!
     flash[:item_notice]='Bookmark created!'
-    renderGroupOrHomeIndex and return
+    redirectToGroupOrHomeIndex @bookmark.id
   end
   
   def show
@@ -111,5 +111,13 @@ class SharedUrlsController < ApplicationController
   
   def generateReadableUrl
     return Rufus::Mnemo::from_integer rand(8**5)
+  end
+
+  def redirectToGroupOrHomeIndex created_id = nil
+    if params[:group_id].blank?
+      redirect_to root_path, :flash => { :created_id => created_id }
+    else
+      redirect_to group_path(:id => params[:group_id]), :flash => { :created_id => created_id }
+    end
   end
 end
