@@ -2,10 +2,6 @@ class GroupsController < ApplicationController
   before_filter :require_user
   before_filter :store_location, :only=>[:show]
   
-  def index
-    redirect_to root_url
-  end
-  
   def show
     @groups = current_user.groups.all
     @group = current_user.groups.find_by_id(params[:id]) or redirect_to root_url

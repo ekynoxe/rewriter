@@ -4,10 +4,6 @@ class SharedUrlsController < ApplicationController
   
   EXCLUSION_LIST = %w{ about admin bookmarks change_details change_password faq forgot_password groups home login logout privacy register reset_password shared_urls shorten termsandconditions user_sessions users whatsitmadeof }
   
-  def index
-    redirect_to root_url
-  end
-
   def new
     @shared_url = SharedUrl.new
   end
@@ -44,9 +40,13 @@ class SharedUrlsController < ApplicationController
   def show
     @shared_url = SharedUrl.find_by_short_url(params[:id])
     if !@shared_url
+      # If not found, redirect to home page
       redirect_to root_url
     else
+      # Keeping statistics on accessed short urls
       UrlRequest.create!({:shared_url => @shared_url})
+
+      # And redirecting to the corresponding full url
       redirect_to @shared_url.full_url
     end
   end
@@ -61,7 +61,7 @@ class SharedUrlsController < ApplicationController
       params[:shared_url] = parameters
   end
   
-  def prepareShortUrl(l=0)
+  def prepareShortUrl (l = 0)
     case Settings.rewrite_scheme
     when "readable"
       shortUrl = generateReadableUrl
@@ -80,7 +80,7 @@ class SharedUrlsController < ApplicationController
     end
   end
   
-  def prepareFullUrl(url)
+  def prepareFullUrl (url)
     if url.blank?
       return nil
     end
@@ -104,7 +104,7 @@ class SharedUrlsController < ApplicationController
     end
   end
   
-  def generateRandomUrl(l)
+  def generateRandomUrl (l)
     o =  [('a'..'z'),('A'..'Z'),('0'..'9')].map{|i| i.to_a}.flatten;
     return (0..l).map{ o[rand(o.length)]  }.join;
   end
@@ -113,7 +113,7 @@ class SharedUrlsController < ApplicationController
     return Rufus::Mnemo::from_integer rand(8**5)
   end
 
-  def redirectToGroupOrHomeIndex created_id = nil
+  def redirectToGroupOrHomeIndex (created_id = nil)
     if params[:group_id].blank?
       redirect_to root_path, :flash => { :created_id => created_id }
     else

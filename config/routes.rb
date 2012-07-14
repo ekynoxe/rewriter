@@ -21,15 +21,23 @@ Rewriter::Application.routes.draw do
   match '/privacy'              => "about#privacy",             :as => :privacy
   match '/whatsitmadeof'        => "about#whatsitmadeof",       :as => :whatsitmadeof
   
+  match '/shorten'          => "shared_urls#create",    :as => :shorten,          :via => :post
+  
+  match "/shared_urls" => redirect("/")
+  match "/bookmarks" => redirect("/")
+  match "/groups" => redirect("/")
+  match "/users" => redirect("/")
+
   resources :bookmarks
   resources :shared_urls
   resources :groups
+  
+  match '/groups/add_bookmarks' => "groups#add_bookmarks",  :as => :add_bookmarks_to_group, :via => :post
   
   resources :users do
     resources :bookmarks
     resources :groups
   end
-  match '/groups/add_bookmarks' => "groups#add_bookmarks",  :as => :add_bookmarks_to_group, :via => :post
   
   namespace :admin do |admin|
     match '/' => 'admin#update', :via => :post
@@ -37,8 +45,6 @@ Rewriter::Application.routes.draw do
     resources :shared_urls
     resources :users
   end
-  
-  match '/shorten'          => "shared_urls#create",    :as => :shorten,          :via => :post
   
   #this should take care of redirecting a short url to its full url
   match '/:id'              => "shared_urls#show"

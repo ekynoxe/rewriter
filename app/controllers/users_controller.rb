@@ -5,10 +5,6 @@ class UsersController < ApplicationController
   rescue_from ActionController::UnknownAction, :with => :redirect_home
   rescue_from ActiveRecord::RecordNotFound, :with => :redirect_home
   
-  def index
-    @users = User.all
-  end
-  
   def new
     @user = User.new
   end
