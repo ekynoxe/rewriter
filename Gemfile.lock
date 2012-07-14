@@ -85,6 +85,7 @@ GEM
     mime-types (1.19)
     multi_json (1.3.6)
     nokogiri (1.5.5)
+    pg (0.13.2)
     polyglot (0.3.3)
     rack (1.3.6)
     rack-cache (1.2)
@@ -165,6 +166,7 @@ DEPENDENCIES
   autotest-rails
   cucumber-rails
   jquery-rails (>= 0.2.6)
+  pg
   rails (= 3.1.3)
   rails-settings!
   rails3-generators
