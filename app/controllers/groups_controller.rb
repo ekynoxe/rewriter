@@ -25,7 +25,7 @@ class GroupsController < ApplicationController
       flash[:item_notice]='could not save your group'
       render :new and return
     end
-    redirect_to root_url
+    redirect_to group_url(@new_group)
   end
   
   def update

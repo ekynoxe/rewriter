@@ -44,6 +44,5 @@ Rewriter::Application.routes.draw do
   match '/:id'              => "shared_urls#show"
   
   #redirecting anything not matched to the home url
-  match ":controller(/:action/:id/:item_id)", :to => redirect("/")
   match "*path", :to => redirect("/")
 end
