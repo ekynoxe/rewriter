@@ -9,14 +9,12 @@ class GroupsController < ApplicationController
   def show
     @groups = current_user.groups.all
     @group = current_user.groups.find_by_id(params[:id]) or redirect_to root_url
-    @bookmark = Bookmark.new
-    @new_group = Group.new
     @shared_url = SharedUrl.new
   end
   
   def new
-    @shared_url = SharedUrl.new
     @new_group = Group.new
+    @shared_url = SharedUrl.new
   end
   
   def create

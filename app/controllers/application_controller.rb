@@ -48,15 +48,4 @@ class ApplicationController < ActionController::Base
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
     end
-
-    def renderGroupOrHomeIndex
-      @groups = current_user.groups
-      @bookmarks = current_user.bookmarks.find(:all, :conditions => "group_id IS NULL", :order=>"bookmarks.created_at DESC")
-      if params[:group_id].blank?
-        render 'home/index'
-      else
-        @group = current_user.groups.find_by_id(params[:group_id])
-        render 'groups/show'
-      end
-    end
 end
