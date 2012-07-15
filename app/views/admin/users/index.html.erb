@@ -1,9 +1,9 @@
-<h1>All <span class="orange">users</span>:</h1>
+<h1>All <span class="highlighted">users</span>:</h1>
 <div id="box">
 <ul>
 <% @users.each do |u| %>
 <li>
-	<%= u.id %> | <%= u.full_name %> | <%= u.login %> | <%= u.email %> <%= u.admin ? ' | <small class="orange">admin</small>'.html_safe : '' %>
+	<%= u.id %> | <%= u.full_name %> | <%= u.login %> | <%= u.email %> <%= u.admin ? ' | <small class="highlighted">admin</small>'.html_safe : '' %>
 </li>
 <% end %>
 </ul>

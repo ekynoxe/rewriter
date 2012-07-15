@@ -1,4 +1,6 @@
 /* ...
 *= require_self
+*= require reset
+*= require main
 *= require_tree . 
 */

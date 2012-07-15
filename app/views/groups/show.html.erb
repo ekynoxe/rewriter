@@ -1,5 +1,5 @@
 <% #groups#show %>
-<h1>&raquo; <span class="orange"><%= @group.name %></span>:</h1>
+<h1>&raquo; <span class="highlighted"><%= @group.name %></span>:</h1>
 <div id="box">
 <%= render :partial => 'shared_urls/mini_sharedurl_form', :locals => {:current_group => @group} %>
 
@@ -7,8 +7,8 @@
 	<p>Organise your bookmarks! <%= link_to 'create a group', new_group_url %></p>
 <% end %>
 <ul class="tags">
+<li class="new_group"><%= link_to '&raquo; new group'.html_safe, new_group_url %></li>
 <%= render :partial => "groups/group_li", :collection => @groups, :as => :g, :locals => {:current_group => @group} %>
-<li id="new_group_tag"><%= link_to '&raquo; new group'.html_safe, new_group_url %></li>
 </ul>
 
 <%= form_tag add_bookmarks_to_group_url, :class => "wide_form" do %>
