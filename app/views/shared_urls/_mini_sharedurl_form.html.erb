@@ -1,9 +1,10 @@
 <%= form_for @shared_url, :url => shorten_url, :html => { :class => "wide_form", :id => "new_shared_url_form" } do |f| %>
 	<%= errors_for(@shared_url, "Opps, unable to shorten your url").html_safe %>
+	<%= f.label :full_url, 'Full url' %>
 	<%= f.text_field :full_url, :class => "wide_input", :placeholder => 'http://url.com' %>
 	<%= hidden_field_tag :group_id, current_group.id if defined?(current_group)%>
 	<% if current_user.is_admin? %>
-		<p>Short url</p>
+		<%= f.label :short_url, 'Short url' %>
 		<%= f.text_field :short_url, :class => "wide_input", :placeholder => 'abcde' %>
 	<% end %>
 	<%= f.submit 'shorten', :id => "shorten_form_submit" %>

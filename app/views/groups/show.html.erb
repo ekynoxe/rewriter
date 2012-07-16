@@ -1,5 +1,7 @@
 <% #groups#show %>
-<h1>&raquo; <span class="highlighted"><%= @group.name %></span>:</h1>
+<% content_for :subtitle do %>
+	<span>&raquo; <span class="highlighted"><%= @group.name %></span>:</span>
+<% end %>
 <div id="box">
 <%= render :partial => 'shared_urls/mini_sharedurl_form', :locals => {:current_group => @group} %>
 
@@ -12,10 +14,9 @@
 </ul>
 
 <%= form_tag add_bookmarks_to_group_url, :class => "wide_form" do %>
-<%= collection_select "group", "id", current_user.groups.all, :id, :name, options={:include_blank => 'Move selected bookmarks to a group'}, :class=>"aselect wide_input" %>
+<%= collection_select "group", "id", current_user.groups.all, :id, :name, options = {:include_blank => 'Move selected bookmarks to a group'}, :class=>"aselect wide_input" %>
 <%= submit_tag 'move' %>
 <span class="clearfix"></span>
-<!--small class="info">Deleting a bookmark will not delete the short url, so others can still access it if it's been shared!</small-->
 <% if @group.bookmarks.size == 0 %>
 	<p>There are no bookmarks in this group!</p>
 <% end %>

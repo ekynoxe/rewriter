@@ -1,4 +1,6 @@
-<h1>create a <span class="highlighted">group</span>.</h1>
+<% content_for :subtitle do %>
+	<span>create a <span class="highlighted">group</span>.</span>
+<% end %>
 <div id="box">
 <%= render :partial => 'groups/mini_group_form', :group => @group %>
 </div>

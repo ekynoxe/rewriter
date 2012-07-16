@@ -1,4 +1,6 @@
-<h1>Change your <span class="highlighted">details</span>...</h1>
+<% content_for :subtitle do %>
+	<span>Change your <span class="highlighted">details</span>...</span>
+<% end %>
 <div id="box">
 <%= form_for current_user, :url=> change_details_url do |f| %>
 	<%= errors_for(current_user, "Opps, unable to change your details").html_safe %>

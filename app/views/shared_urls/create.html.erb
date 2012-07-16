@@ -1,4 +1,6 @@
-<h1>success<span class="highlighted">!</span></h1>
+<% content_for :subtitle do %>
+	<span>success<span class="highlighted">!</span></span>
+<% end %>
 <div id="box">
 <p>Your short URL has been created:</p>
 <p><%= link_to(root_url()+(@shared_url.short_url || ''), root_url()+(@shared_url.short_url || ''), :target => '_blank') %></p>

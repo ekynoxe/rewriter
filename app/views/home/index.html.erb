@@ -1,5 +1,7 @@
 <% #home#index %>
-<h1>Your <span class="highlighted">bookmarks</span>:</h1>
+<% content_for :subtitle do %>
+	<span>Your <span class="highlighted">bookmarks</span>:</span>
+<% end %>
 <div id="box">
 <%= render :partial => 'shared_urls/mini_sharedurl_form', :shared_url => @shared_url %>
 

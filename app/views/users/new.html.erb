@@ -1,4 +1,6 @@
-<h1>register<span class="highlighted">!</span></h1>
+<% content_for :subtitle do %>
+	<span>register<span class="highlighted">!</span></span>
+<% end %>
 <div id="box">
 <%= render :partial => 'user_form', :user => @user %>
 </div>

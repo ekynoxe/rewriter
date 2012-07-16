@@ -1,5 +1,6 @@
-<h1>Login<span class="highlighted">.</span></h1>
-
+<% content_for :subtitle do %>
+	<span>Login<span class="highlighted">.</span></span>
+<% end %>
 <div id="box">
 <%= form_for @user_session, :url => login_url do |f| %>
 	<%= errors_for(@user_session, "Opps, unable to log you in").html_safe %>

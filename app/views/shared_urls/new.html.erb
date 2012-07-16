@@ -1,4 +1,6 @@
-<h1>shorten a <span class="highlighted">url</span>.</h1>
+<% content_for :subtitle do %>
+	<span>shorten a <span class="highlighted">url</span>.</span>
+<% end %>
 <div id="box">
 <%= render :partial => 'shared_urls/mini_sharedurl_form', :shared_url => @shared_url %>
 </div>

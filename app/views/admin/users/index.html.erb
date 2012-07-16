@@ -1,4 +1,6 @@
-<h1>All <span class="highlighted">users</span>:</h1>
+<% content_for :subtitle do %>
+	<span>All <span class="highlighted">users</span>:</span>
+<% end %>
 <div id="box">
 <ul>
 <% @users.each do |u| %>
